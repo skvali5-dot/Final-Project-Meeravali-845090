@@ -1,0 +1,34 @@
+
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <!-- Brand -->
+    <a class="navbar-brand" href="#">Logo</a>
+  
+    <!-- Links -->
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="'daily-reports'">Daily Reports</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="'block-or-unblock-buyer'">Block Or UnBlock Buyer</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="'block-or-unblock-seller'">Block or UnBlock Seller</a>
+      </li>
+      <!-- Dropdown -->
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
+          Categories
+        </a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" [routerLink]="'add-category'">Add Category</a>
+          <a class="dropdown-item" [routerLink]="'add-sub-category'">Add SubCategory</a>
+        </div>
+      </li>
+      <li>
+          <div>
+            <button class="btn btn-danger" (click)="Logout()">SignOut</button>
+          </div>
+        </li>
+    </ul>
+  </nav>
+  <router-outlet></router-outlet>
