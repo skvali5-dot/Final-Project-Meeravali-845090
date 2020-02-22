@@ -10,7 +10,7 @@ namespace Emart.UserService.Repositories
     {
         bool BuyerLogin(string username,string password);
         bool SellerLogin(string username,string password);
-        void SellerSignUp(Seller obj);
-        void BuyerSignUp(Buyer obj);
+        void SellerSignUp(Seller seller);
+        void BuyerSignUp(Buyer buyer);
     }
 }

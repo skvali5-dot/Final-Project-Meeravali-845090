@@ -12,9 +12,9 @@ namespace Emart.SellerService.Repositories
         {
             _context = context;
         }
-        public void AddItems(Items obj)
+        public void AddItems(Items item)
         {
-            _context.Add(obj);
+            _context.Add(item);
             _context.SaveChanges();
         }
 
@@ -29,9 +29,9 @@ namespace Emart.SellerService.Repositories
             return _context.Items.Find(id);
         }
 
-        public void UpdateItemStock(Items obj)
+        public void UpdateItemStock(Items item)
         {
-            _context.Items.Update(obj);
+            _context.Items.Update(item);
             _context.SaveChanges();
         }
 

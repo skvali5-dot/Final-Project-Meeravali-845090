@@ -19,11 +19,11 @@ namespace Emart.SellerService.Controllers
         }
         [HttpPost]
         [Route("EditProfile")]
-        public IActionResult EditProfile(Seller sel)
+        public IActionResult EditProfile(Seller seller)
         {
             try
             {
-                _repo.EditProfile(sel);
+                _repo.EditProfile(seller);
                 return Ok();
             }
             catch (Exception ex)

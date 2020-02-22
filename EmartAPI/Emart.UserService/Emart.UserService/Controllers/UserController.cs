@@ -45,11 +45,11 @@ namespace Emart.UserService.Controllers
         }
         [HttpPost]
         [Route("BuyerSignUp")]
-        public IActionResult BuyerSignUp(Buyer item)
+        public IActionResult BuyerSignUp(Buyer buyer)
         {
             try
             {
-                _repo.BuyerSignUp(item);
+                _repo.BuyerSignUp(buyer);
                 return Ok();
             }
             catch(Exception ex)
@@ -59,11 +59,11 @@ namespace Emart.UserService.Controllers
         }
         [HttpPost]
         [Route("SellerSignUp")]
-        public IActionResult SellerSignUp(Seller item)
+        public IActionResult SellerSignUp(Seller seller)
         {
             try
             {
-                _repo.SellerSignUp(item);
+                _repo.SellerSignUp(seller);
                 return Ok();
             }
             catch (Exception ex)

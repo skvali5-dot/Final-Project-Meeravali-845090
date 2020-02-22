@@ -7,7 +7,7 @@ namespace Emart.SellerService.Repositories
 {
     public interface ISellerRepository
     {
-        void EditProfile(Seller obj);
+        void EditProfile(Seller seller);
         Seller GetProfile(string id);
     }
 }

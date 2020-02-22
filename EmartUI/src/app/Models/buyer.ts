@@ -5,6 +5,6 @@ export class Buyer {
     username:string;
     password:string;
     emailid:string;
-    moilenumber:number;
+    mobilenumber:number;
     createddatetime:Date;
 }

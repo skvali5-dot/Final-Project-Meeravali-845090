@@ -1,3 +1,8 @@
+.jumbotron{
+  background-image: url('D:\Final-Project-Meeravali-845090\EmartUI\src\assets\Images\bg.jpg');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
 :root {
     --input-padding-x: 1.5rem;
     --input-padding-y: .75rem;

@@ -46,5 +46,33 @@ namespace Emart.AdminService.Controllers
                 return NotFound(ex.InnerException.Message);
             }
         }
+        [HttpDelete]
+        [Route("DeleteCatrgory/{category_id}")]
+        public IActionResult DeleteCategory(string category_id)
+        {
+            try
+            {
+                _repo.DeleteCategory(category_id);
+                return Ok();
+            }
+            catch(Exception ex)
+            {
+                return NotFound(ex.Message);
+            }
+        }
+        [HttpDelete]
+        [Route("DeleteSubCatrgory/{subcategory_id}")]
+        public IActionResult DeleteSubCategory(string subcategory_id)
+        {
+            try
+            {
+                _repo.DeleteCategory(subcategory_id);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return NotFound(ex.Message);
+            }
+        }
     }
 }

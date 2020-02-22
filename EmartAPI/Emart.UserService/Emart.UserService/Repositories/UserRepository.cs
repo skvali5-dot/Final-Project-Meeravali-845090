@@ -15,31 +15,30 @@ namespace Emart.UserService.Repositories
         public bool BuyerLogin(string username, string password)
         {
             
-          Buyer item=_context.Buyer.SingleOrDefault(i => i.Username == username && i.Password == password);
-          if (item.Username == username && item.Password == password)
+          Buyer buyer=_context.Buyer.SingleOrDefault(i => i.Username == username && i.Password == password);
+          if (buyer.Username == username && buyer.Password == password)
           {
                 Console.WriteLine("Login Successfulll");
               return true;
           }
           else
           {
-                Console.WriteLine("Login Failed" +
-                    "");
+                Console.WriteLine("Login Failed");
                 return false;
           }
         }
 
-        public void BuyerSignUp(Buyer obj)
+        public void BuyerSignUp(Buyer buyer)
         {
-            _context.Add(obj);
+            _context.Add(buyer);
             _context.SaveChanges();
         }
 
         public bool SellerLogin(string username, string password)
         {
             
-            Seller item = _context.Seller.SingleOrDefault(i => i.Username == username && i.Password == password);
-            if (item.Username == username && item.Password == password)
+            Seller seller = _context.Seller.SingleOrDefault(i => i.Username == username && i.Password == password);
+            if (seller.Username == username && seller.Password == password)
             {
                 Console.WriteLine("Login Successfulll");
                 return true;
@@ -51,9 +50,9 @@ namespace Emart.UserService.Repositories
             }
         }
 
-        public void SellerSignUp(Seller obj)
+        public void SellerSignUp(Seller seller)
         {
-            _context.Add(obj);
+            _context.Add(seller);
             _context.SaveChanges();
         }
     }
