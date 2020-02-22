@@ -12,28 +12,15 @@ namespace Emart.SellerService.Repositories
         {
             _context = context;
         }
-        public void AddItems(Items obj)
+    
+        public void EditProfile(Seller obj)
         {
-            _context.Add(obj);
+            _context.Seller.Update(obj);
             _context.SaveChanges();
         }
-
-        public void DeleteItem(string id)
+        public Seller GetProfile(string id)
         {
-            Items item = _context.Items.Find(id);
-            _context.Items.Remove(item);
-            _context.SaveChanges();
-        }
-        public void UpdateItemStock(Items obj)
-        {
-            _context.Items.Update(obj);
-            _context.SaveChanges();
-        }
-
-        public int ViewStock(string id)
-        {
-            Items item = _context.Items.Find(id);
-            return item.StockNumber;
+            return _context.Seller.Find(id);
         }
     }
 }

@@ -7,9 +7,7 @@ namespace Emart.SellerService.Repositories
 {
     public interface ISellerRepository
     {
-        void AddItems(Items obj);
-        void DeleteItem(string id);
-        void UpdateItemStock(Items obj);
-        int ViewStock(string id);
+        void EditProfile(Seller obj);
+        Seller GetProfile(string id);
     }
 }

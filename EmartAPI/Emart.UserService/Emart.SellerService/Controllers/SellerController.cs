@@ -18,42 +18,12 @@ namespace Emart.SellerService.Controllers
             _repo = repo;
         }
         [HttpPost]
-        [Route("AddItems")]
-        public IActionResult AddItems(Items item)
+        [Route("EditProfile")]
+        public IActionResult EditProfile(Seller sel)
         {
             try
             {
-                _repo.AddItems(item);
-                return Ok();
-            }
-            catch(Exception ex)
-            {
-                return NotFound(ex.InnerException.Message);
-            }
-
-        }
-        [HttpDelete]
-        [Route("DeleteItem/{id}")]
-        public IActionResult DeleteItem(string id)
-        {
-            try
-            {
-                _repo.DeleteItem(id);
-                return Ok();
-            }
-            catch (Exception ex)
-            {
-                return NotFound(ex.InnerException.Message);
-            }
-
-        }
-        [HttpPut]
-        [Route("UpdateItemsStock")]
-        public IActionResult UpdateItemsStock(Items item)
-        {
-            try
-            {
-                _repo.UpdateItemStock(item);
+                _repo.EditProfile(sel);
                 return Ok();
             }
             catch (Exception ex)
@@ -63,18 +33,17 @@ namespace Emart.SellerService.Controllers
 
         }
         [HttpGet]
-        [Route("ViewStock/{id}")]
-        public IActionResult ViewStock(string id)
+        [Route("GetProfile/{id}")]
+        public IActionResult GetProfie(string id)
         {
             try
             {
-                return Ok(_repo.ViewStock(id));
+                return Ok(_repo.GetProfile(id));
             }
-            catch (Exception ex)
+            catch(Exception ex)
             {
-                return NotFound(ex.InnerException.Message);
+                return NotFound(ex.InnerException);
             }
-
         }
     }
 }

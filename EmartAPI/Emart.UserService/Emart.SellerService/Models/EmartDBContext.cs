@@ -27,7 +27,7 @@ namespace Emart.SellerService.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
+//#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
                 optionsBuilder.UseSqlServer("Data Source=DESKTOP-HPSFJH3\\SQLEXPRESS;Initial Catalog=EmartDB;User ID=sa;Password=pass@word1");
             }
         }
@@ -162,8 +162,10 @@ namespace Emart.SellerService.Models
                     .IsUnicode(false);
 
                 entity.Property(e => e.Price)
+                    .IsRequired()
                     .HasColumnName("price")
-                    .HasColumnType("decimal(18, 0)");
+                    .HasMaxLength(20)
+                    .IsUnicode(false);
 
                 entity.Property(e => e.Remarks)
                     .IsRequired()
@@ -171,7 +173,16 @@ namespace Emart.SellerService.Models
                     .HasMaxLength(30)
                     .IsUnicode(false);
 
-                entity.Property(e => e.StockNumber).HasColumnName("stock_number");
+                entity.Property(e => e.Sellerid)
+                    .HasColumnName("sellerid")
+                    .HasMaxLength(20)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.StockNumber)
+                    .IsRequired()
+                    .HasColumnName("stock_number")
+                    .HasMaxLength(20)
+                    .IsUnicode(false);
 
                 entity.Property(e => e.SubcategoryId)
                     .HasColumnName("subcategory_id")
@@ -181,16 +192,25 @@ namespace Emart.SellerService.Models
                 entity.HasOne(d => d.Category)
                     .WithMany(p => p.Items)
                     .HasForeignKey(d => d.CategoryId)
-                    .HasConstraintName("FK__Items__category___60A75C0F");
+                    .HasConstraintName("FK__Items__category___787EE5A0");
+
+                entity.HasOne(d => d.Seller)
+                    .WithMany(p => p.Items)
+                    .HasForeignKey(d => d.Sellerid)
+                    .HasConstraintName("FK__Items__sellerid__7A672E12");
 
                 entity.HasOne(d => d.Subcategory)
                     .WithMany(p => p.Items)
                     .HasForeignKey(d => d.SubcategoryId)
-                    .HasConstraintName("FK__Items__subcatego__619B8048");
+                    .HasConstraintName("FK__Items__subcatego__797309D9");
             });
 
             modelBuilder.Entity<PurchaseHistory>(entity =>
             {
+                entity.Property(e => e.Id)
+                    .HasMaxLength(20)
+                    .IsUnicode(false);
+
                 entity.Property(e => e.BuyerId)
                     .HasColumnName("Buyer_id")
                     .HasMaxLength(20)
@@ -205,7 +225,11 @@ namespace Emart.SellerService.Models
                     .HasMaxLength(20)
                     .IsUnicode(false);
 
-                entity.Property(e => e.NumberOfItems).HasColumnName("Number_of_items");
+                entity.Property(e => e.NumberOfItems)
+                    .IsRequired()
+                    .HasColumnName("Number_of_items")
+                    .HasMaxLength(20)
+                    .IsUnicode(false);
 
                 entity.Property(e => e.Remarks)
                     .IsRequired()
@@ -227,17 +251,17 @@ namespace Emart.SellerService.Models
                 entity.HasOne(d => d.Buyer)
                     .WithMany(p => p.PurchaseHistory)
                     .HasForeignKey(d => d.BuyerId)
-                    .HasConstraintName("FK__PurchaseH__Buyer__6477ECF3");
+                    .HasConstraintName("FK__PurchaseH__Buyer__7D439ABD");
 
                 entity.HasOne(d => d.Item)
                     .WithMany(p => p.PurchaseHistory)
                     .HasForeignKey(d => d.ItemId)
-                    .HasConstraintName("FK__PurchaseH__Item___66603565");
+                    .HasConstraintName("FK__PurchaseH__Item___7F2BE32F");
 
                 entity.HasOne(d => d.Seller)
                     .WithMany(p => p.PurchaseHistory)
                     .HasForeignKey(d => d.SellerId)
-                    .HasConstraintName("FK__PurchaseH__Selle__656C112C");
+                    .HasConstraintName("FK__PurchaseH__Selle__7E37BEF6");
             });
 
             modelBuilder.Entity<Seller>(entity =>

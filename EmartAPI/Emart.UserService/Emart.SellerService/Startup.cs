@@ -28,7 +28,9 @@ namespace Emart.SellerService
         {
             services.AddDbContext<EmartDBContext>();
             services.AddControllers();
-            services.AddTransient<ISellerRepository, SellerRepository>();
+            services.AddTransient<ISellerRepository, SellerRepository>();      
+
+            services.AddTransient<IItemRepository, ItemRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
