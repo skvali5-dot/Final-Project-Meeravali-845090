@@ -30,7 +30,7 @@
                           <input type="text" formControlName="id" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.id.errors }" />
                           <div *ngIf="submitted && f.id.errors" class="invalid-feedback">
                               <div *ngIf="f.id.errors.required">ID is required</div>
-                              <div *ngIf="f.id.errors.pattern">Enter your 4 digit Id followed by E</div>
+                              <div *ngIf="f.id.errors.pattern">Enter your 4 digit Id followed by B</div>
                           </div>
                         </div>
 
@@ -70,6 +70,11 @@
                           <div *ngIf="f.mobile.errors.pattern">Mobile no Must be Valid</div>
                         </div>
                     </div>
+
+                    <div class="form-group">
+                      <label>DateTime</label>
+                      <input type="date" formControlName="createddatetime"  class="form-control" required/>
+                  </div>
                     
                     <div class="form-group">  
                       <div class="text-center">      

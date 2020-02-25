@@ -1,12 +1,12 @@
 export class Seller {
-    id:number;
+    id:string;
     username:string;
     password:string;
     companyname:string;
-    gstin:string;
+    GSTIN:string;
     briefaboutcompany:string;
-    postal_address:string;
+    postaladdress:string;
     website:string;
     emailid:string;
-    contactnumber:number;
+    contactnumber:string;
 }

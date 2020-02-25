@@ -20,6 +20,11 @@ namespace Emart.GateWay
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
+                    webBuilder.ConfigureAppConfiguration((host, config) =>
+                    {
+                        config.AddJsonFile("Ocelot.json");
+
+                    });
                     webBuilder.UseStartup<Startup>();
                 });
     }

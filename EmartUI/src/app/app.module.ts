@@ -23,6 +23,7 @@ import { RegisterSellerComponent } from './Account/register-seller/register-sell
 import { AdminComponent } from './Admin/admin/admin.component';
 import { BlockOrUnblockBuyerComponent } from './Admin/block-or-unblock-buyer/block-or-unblock-buyer.component';
 import { HomeComponent } from './Account/home/home.component';
+import {HttpClient,HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { HomeComponent } from './Account/home/home.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

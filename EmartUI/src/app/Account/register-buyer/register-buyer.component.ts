@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Buyer } from 'src/app/Models/buyer';
 import {FormGroup,FormBuilder,Validators} from '@angular/forms';
+import { AccountService } from 'src/app/Services/account.service';
+import { combineLatest } from 'rxjs';
 @Component({
   selector: 'app-register-buyer',
   templateUrl: './register-buyer.component.html',
@@ -10,27 +12,19 @@ export class RegisterBuyerComponent implements OnInit {
 
   RegisterForm:FormGroup;
   submitted=false;
-  lists:Buyer[]=[];
-  item:Buyer;
-  id:number;
-  username:string;
-  password:string;
-  emailid:string;
-  mobile:number; 
-  /*createddatetime:Date;*/
-
-
-  constructor(private formbuilder:FormBuilder) { }
+  lists:Buyer[];
+  buyer:Buyer;
+  constructor(private formbuilder:FormBuilder,private service:AccountService) { 
+  }
 
   ngOnInit() {
       this.RegisterForm=this.formbuilder.group({
-      id:['',[Validators.required,Validators.pattern('^[0-9]{4}$')]],
-      username:['',[Validators.required,Validators.pattern('^[A-Z][0-9]$')]],
-      password:['',[Validators.required,Validators.pattern('^[a-zA-Z0-9]{7,10}[~`!@#$%^&*()-+=]$')]],
+      id:['',[Validators.required,Validators.pattern('^[0-9A-Za-z]{4}$')]],
+      username:['',[Validators.required,Validators.pattern('^[A-Za-z0-9]{2,20}$')]],
+      password:['',[Validators.required,Validators.pattern('^[a-zA-Z0-9]{4,10}[~`!@#$%^&*()-+=]$')]],
       emailid:['',[Validators.required,Validators.email]],
       mobile:['',[Validators.required,Validators.pattern('^[6-9][0-9]{9}$')]],
-    
-
+      createddatetime:['']
     });
   }
   
@@ -39,15 +33,21 @@ export class RegisterBuyerComponent implements OnInit {
     this.submitted=true;
     if(this.RegisterForm.valid)
     {
-      this.item=new Buyer();
-      this.item.id=this.RegisterForm.value["id"];
-      this.item.username=this.RegisterForm.value["username"];
-      this.item.password=this.RegisterForm.value["password"];
-      this.item.emailid=this.RegisterForm.value["emailid"];
-      this.item.mobilenumber=this.RegisterForm.value["mobile"];
-      alert('Success!! :-)\n\n');
-      console.log(JSON.stringify(this.RegisterForm)) ;
-      this.lists.push(this.item);
+      this.buyer=new Buyer();
+      this.buyer.id=this.RegisterForm.value["id"];
+      this.buyer.username=this.RegisterForm.value["username"];
+      this.buyer.password=this.RegisterForm.value["password"];
+      this.buyer.emailid=this.RegisterForm.value["emailid"];
+      this.buyer.mobilenumber=this.RegisterForm.value["mobile"];
+      this.buyer.createddatetime=this.RegisterForm.value["createddatetime"];
+      console.log(this.buyer); 
+      this.service.BuyerSignup(this.buyer).subscribe(res=>{
+        this.buyer=res;
+        console.log(this.buyer);
+        alert('Registration Successfull');
+      },err=>{
+        console.log(err);
+      })
     }
   }
   get f() { return this.RegisterForm.controls; }

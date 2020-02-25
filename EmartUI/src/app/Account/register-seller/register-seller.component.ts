@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder ,Validators} from '@angular/forms';
 import {Seller} from 'src/app/Models/seller';
+import { AccountService } from 'src/app/Services/account.service';
+import { combineLatest } from 'rxjs';
 
 @Component({
   selector: 'app-register-seller',
@@ -11,35 +13,36 @@ export class RegisterSellerComponent implements OnInit {
 
   RegisterForm1:FormGroup;
   submitted=false;
-  lists:Seller[]=[];
-  item:Seller;
-  id:number;
-  username:string;
-  password:string;
-  companyname:string;
-  GSTIN:number;
-  brief_about_company:string;
-  postal_address:string;
-  website:string;
-  emailid:string;
-  contact:number;
-
-  constructor(private formbuilder:FormBuilder) { 
-
+  lists:Seller[];
+  seller:Seller;
+  constructor(private formbuilder:FormBuilder,private service:AccountService) { 
   }
 
   ngOnInit() {
-    this.RegisterForm1=this.formbuilder.group({
-      id:['',[Validators.required,Validators.pattern('^[0-9]{4}$')]],
-      username:['',[Validators.required,Validators.pattern('^[A-Z][0-9]$')]],
-      password:['',[Validators.required,Validators.pattern('^[a-zA-Z0-9]{7,10}[~`!@#$%^&*()-+=]$')]],
-      companyname:['',[Validators.required,Validators.pattern('^[a-zA-Z]$')]],
-      GSTIN:['',[Validators.required,Validators.pattern('^[0-9]$')]],
-      brief_about_company:['',[Validators.required,Validators.pattern('^[a-zA-z]$')]],
-      postal_address:['',[Validators.required,Validators.pattern('^[a-zA-Z][0-9]$')]],
-      website:['',Validators.required],
+    
+   /* this.RegisterForm1=this.formbuilder.group({
+      id:['',[Validators.required,Validators.pattern('^[A-Za-z0-9]{4}$')]],
+      username:['',[Validators.required,Validators.pattern('^[a-z0-9A-Z]{2,20}$')]],
+      password:['',[Validators.required,Validators.pattern('^[a-zA-Z0-9]$')]],
+      companyname:['',[Validators.required,Validators.pattern('^[a-zA-Z]{3,20}$')]],
+      GSTIN:['',[Validators.required,Validators.pattern('^[a-zA-Z]{2,10}$')]],
+      briefaboutcompany:['',[Validators.required,Validators.pattern('^[a-zA-z]{2,150}$')]],
+      postal_address:['',[Validators.required,Validators.pattern('^[0-9]{6}$')]],
+      website:[''],
       emailid:['',[Validators.required,Validators.email]],
-      contact:['',[Validators.required,Validators.pattern('^[6-9][0-9]{9}$')]]
+      contactnumber:['',[Validators.required,Validators.pattern('^[6-9][0-9]{9}$')]]
+  });*/
+  this.RegisterForm1=this.formbuilder.group({
+    id:[''],
+    username:[''],
+    password:[''],
+    companyname:[''],
+    GSTIN:[''],
+    briefaboutcompany:[''],
+    postaladdress:[''],
+    website:[''],
+    emailid:[''],
+    contactnumber:['']
   });
 
 }
@@ -48,20 +51,24 @@ export class RegisterSellerComponent implements OnInit {
     this.submitted=true;
     if(this.RegisterForm1.valid)
     {
-      this.item=new Seller();
-      this.item.id=this.RegisterForm1.value["id"];
-      this.item.username=this.RegisterForm1.value["username"];
-      this.item.password=this.RegisterForm1.value["password"];
-      this.item.companyname=this.RegisterForm1.value["company name"];
-      this.item.gstin=this.RegisterForm1.value["GSTIN"];
-      this.item.briefaboutcompany=this.RegisterForm1.value["breif-about-company"];
-      this.item.postal_address=this.RegisterForm1.value["postal address"];
-      this.item.website=this.RegisterForm1.value["website"];
-      this.item.emailid=this.RegisterForm1.value["emailid"];
-      this.item.contactnumber=this.RegisterForm1.value["contact"];
-      alert('Success!! :-)\n\n');
-      console.log(JSON.stringify(this.RegisterForm1)) ;
-      this.lists.push(this.item);
+      this.seller=new Seller();
+      this.seller.id=this.RegisterForm1.value["id"];
+      this.seller.username=this.RegisterForm1.value["username"];
+      this.seller.password=this.RegisterForm1.value["password"];
+      this.seller.companyname=this.RegisterForm1.value["companyname"];
+      this.seller.GSTIN=this.RegisterForm1.value["GSTIN"];
+      this.seller.briefaboutcompany=this.RegisterForm1.value["briefaboutcompany"];
+      this.seller.postaladdress=this.RegisterForm1.value["postaladdress"];
+      this.seller.website=this.RegisterForm1.value["website"];
+      this.seller.emailid=this.RegisterForm1.value["emailid"];
+      this.seller.contactnumber=this.RegisterForm1.value["contactnumber"];   
+      console.log(this.seller);
+      this.service.SellerSignUp(this.seller).subscribe(res=>{
+         this.seller=res;
+         console.log(this.seller);
+      },err=>{
+        console.log(err);
+      })
     }
   }
   get f() { return this.RegisterForm1.controls; }
