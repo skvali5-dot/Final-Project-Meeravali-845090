@@ -56,9 +56,9 @@ export class RegisterSellerComponent implements OnInit {
       this.seller.username=this.RegisterForm1.value["username"];
       this.seller.password=this.RegisterForm1.value["password"];
       this.seller.companyname=this.RegisterForm1.value["companyname"];
-      this.seller.GSTIN=this.RegisterForm1.value["GSTIN"];
+      this.seller.gstin=this.RegisterForm1.value["GSTIN"];
       this.seller.briefaboutcompany=this.RegisterForm1.value["briefaboutcompany"];
-      this.seller.postaladdress=this.RegisterForm1.value["postaladdress"];
+      this.seller.postalAddress=this.RegisterForm1.value["postaladdress"];
       this.seller.website=this.RegisterForm1.value["website"];
       this.seller.emailid=this.RegisterForm1.value["emailid"];
       this.seller.contactnumber=this.RegisterForm1.value["contactnumber"];   

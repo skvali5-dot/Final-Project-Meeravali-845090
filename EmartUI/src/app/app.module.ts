@@ -24,6 +24,7 @@ import { AdminComponent } from './Admin/admin/admin.component';
 import { BlockOrUnblockBuyerComponent } from './Admin/block-or-unblock-buyer/block-or-unblock-buyer.component';
 import { HomeComponent } from './Account/home/home.component';
 import {HttpClient,HttpClientModule} from '@angular/common/http';
+import { SellerProfileComponent } from './Seller/seller-profile/seller-profile.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import {HttpClient,HttpClientModule} from '@angular/common/http';
     RegisterSellerComponent,
     AdminComponent,
     HomeComponent,
+    SellerProfileComponent,
   ],
   imports: [
     BrowserModule,

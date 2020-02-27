@@ -21,15 +21,15 @@ import { RegisterBuyerComponent } from './Account/register-buyer/register-buyer.
 import { RegisterSellerComponent } from './Account/register-seller/register-seller.component';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './Account/home/home.component';
+import { SellerProfileComponent } from './Seller/seller-profile/seller-profile.component';
 
 const routes: Routes = [
-  {path:'admin',component:AdminComponent,children:[
+    {path:'admin',component:AdminComponent},
     {path:'add-sub-category',component:AddSubCategoryComponent},
     {path:'block-or-unblock-buyer',component:BlockOrUnblockBuyerComponent},
     {path:'block-or-unblock-seller',component:BlockOrUnblockSellerComponent},
     {path:'daily-reports',component:DailyReportsComponent},
-    {path:'add-category',component:AddCategoryComponent}
-  ]},
+    {path:'add-category',component:AddCategoryComponent},
   {path:'app',component:AppComponent},
   {path:'buyer-landing-page',component:BuyerLandingPageComponent,children:[
     {path:'buy-product',component:BuyProductComponent},
@@ -38,12 +38,11 @@ const routes: Routes = [
     {path:'view-cart',component:ViewCartComponent},
     {path:'view-profile',component:ViewProfileComponent}
   ]},
-  {path:'seller-landing-page',component:SellerLandingPageComponent,children:[
+  {path:'seller-landing-page',component:SellerLandingPageComponent},
     {path:'add-items',component:AddItemsComponent},
     {path:'view-items',component:ViewItemsComponent},
-    {path:'view-profile',component:ViewProfileComponent},
-    {path:'view-reports',component:ViewReportsComponent}
-  ]},
+    {path:'view-reports',component:ViewReportsComponent},
+    {path:'seller-profile',component:SellerProfileComponent},
   {path:'home',component:HomeComponent},
   {path:'login',component:LoginComponent},
   {path:'register-buyer',component:RegisterBuyerComponent},

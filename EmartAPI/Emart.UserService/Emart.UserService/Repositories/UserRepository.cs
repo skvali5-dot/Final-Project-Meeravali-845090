@@ -12,19 +12,19 @@ namespace Emart.UserService.Repositories
         {
             _context = context;
         }
-        public bool BuyerLogin(string username, string password)
+        public Buyer BuyerLogin(string username, string password)
         {
             
           Buyer buyer=_context.Buyer.SingleOrDefault(i => i.Username == username && i.Password == password);
           if (buyer.Username == username && buyer.Password == password)
           {
                 Console.WriteLine("Login Successfulll");
-              return true;
+              return buyer;
           }
           else
           {
                 Console.WriteLine("Login Failed");
-                return false;
+                return null;
           }
         }
 
@@ -34,19 +34,19 @@ namespace Emart.UserService.Repositories
             _context.SaveChanges();
         }
 
-        public bool SellerLogin(string username, string password)
+        public Seller SellerLogin(string username, string password)
         {
             
             Seller seller = _context.Seller.SingleOrDefault(i => i.Username == username && i.Password == password);
             if (seller.Username == username && seller.Password == password)
             {
                 Console.WriteLine("Login Successfulll");
-                return true;
+                return seller;
             }
             else
             {
                 Console.WriteLine("Login Failed");
-                return false;
+                return null;               
             }
         }
 

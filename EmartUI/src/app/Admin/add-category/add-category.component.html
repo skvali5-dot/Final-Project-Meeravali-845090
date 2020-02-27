@@ -1,1 +1,75 @@
-<p>add-category works!</p>
+<html>
+    <head></head>
+    <body>
+        <header>
+            <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+                <!-- Brand -->
+                <a class="navbar-brand" href="#">Logo</a>
+              
+                <!-- Links -->
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link" [routerLink]="'/daily-reports'" style="color: whitesmoke;">Daily Reports</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" [routerLink]="'/block-or-unblock-buyer'" style="color: whitesmoke;">Block Or UnBlock Buyer</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" [routerLink]="'/block-or-unblock-seller'" style="color: whitesmoke;">Block or UnBlock Seller</a>
+                  </li>
+                  <!-- Dropdown -->
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown" style="color: whitesmoke;">
+                      Categories
+                    </a>
+                    <div class="dropdown-menu">
+                      <a class="dropdown-item" [routerLink]="'/add-category'">Add Category</a>
+                      <a class="dropdown-item" [routerLink]="'/add-sub-category'">Add SubCategory</a>
+                    </div>
+                  </li>
+                </ul>
+                <div id="di">
+                  <button class="btn btn-danger" (click)="Logout()">SignOut</button>
+                </div>
+
+              </nav>
+        </header>
+        <main>
+            <div class="jumbotron">
+                <div class="container offset-3">
+                    <div class="row">
+                        <div class="col-sm-9 col-md-7 col-lg-4 mx-auto">
+                            <div class="card card-signin my-5 bg-dark" style="float:right">
+                            <h5 class="card-header text-center" style="color: whitesmoke;">Add Category</h5>
+                                <div class="card-body">
+                                    <form [formGroup]="RegisterForm2" (ngSubmit)="onSubmit()">    
+                                        <div class="form-group">
+                                            <label style="color: whitesmoke;">Category ID</label>
+                                            <input type="text" formControlName="categoryid" class="form-control" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label style="color: whitesmoke;">Category Name</label>
+                                            <input type="text" formControlName="categoryname" class="form-control" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label style="color: whitesmoke;">Brief Details</label>
+                                            <textarea type="text" formControlName="briefdetails" class="form-control"></textarea>
+                                        </div>
+                                        <hr class="my-4 bg-success"/>
+                                        <div class="form-group">
+                                            <div class="text-center">
+                                                <button type="submit" class="btn btn-primary mr-1">Submit</button>
+                                                <button class="btn btn-secondary" type="reset" (click)="onReset()">Cancel</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+             </div>    
+        </main>
+    </body>
+    <router-outlet></router-outlet>
+</html>

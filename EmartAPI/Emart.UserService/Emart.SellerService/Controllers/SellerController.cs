@@ -17,7 +17,7 @@ namespace Emart.SellerService.Controllers
         {
             _repo = repo;
         }
-        [HttpPost]
+        [HttpPut]
         [Route("EditProfile")]
         public IActionResult EditProfile(Seller seller)
         {

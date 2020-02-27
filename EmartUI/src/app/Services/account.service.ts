@@ -25,4 +25,8 @@ export class AccountService {
   {
      return this.http.get<Buyer>(this.url+'BuyerLogin/'+username+'/'+password,Requestheaders);
   }
+  public SellerLogin(username:string,password:string):Observable<any>
+  {
+     return this.http.get<Seller>(this.url+'SellerLogin/'+username+'/'+password,Requestheaders);
+  }
 }
