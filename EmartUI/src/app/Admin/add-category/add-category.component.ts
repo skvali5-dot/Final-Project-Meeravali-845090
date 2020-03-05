@@ -18,9 +18,8 @@ export class AddCategoryComponent implements OnInit {
 
   ngOnInit() {
     this.RegisterForm2=this.formBuilder.group({
-      categoryid:[''],
-      categoryname:[''],
-      briefdetails:['']
+      categoryname:['',[Validators.required]],
+      briefdetails:['',[Validators.required]]
     });
   }
   onSubmit()
@@ -29,16 +28,21 @@ export class AddCategoryComponent implements OnInit {
       if(this.RegisterForm2.valid)
       {
         this.category=new Category();
-        this.category.categoryid=this.RegisterForm2.value["categoryid"];
+        this.category.categoryid='C'+Math.round(Math.random()*1000);
         this.category.categoryname=this.RegisterForm2.value["categoryname"];
         this.category.briefdetails=this.RegisterForm2.value["briefdetails"];
         console.log(this.category);
-      this.service.AddCategory(this.category).subscribe(res=>{
-      },err=>{
-        console.log(err);
-      })
+        alert('Category Added Successfully');
+        this.service.AddCategory(this.category).subscribe(res=>{
+        },err=>{
+          console.log(err);
+        })
+      }
+      else{
+        alert('form is not Validated');
       }
   }
+  get f() { return this.RegisterForm2.controls; }
   onReset(){
     this.submitted=false;
   this.RegisterForm2.reset();

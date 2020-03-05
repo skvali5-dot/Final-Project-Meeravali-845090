@@ -103,5 +103,31 @@ namespace Emart.SellerService.Controllers
                 return NotFound(ex.InnerException.Message);
             }
         }
+        [HttpGet]
+        [Route("GetCategories")]
+        public IActionResult GetCategories()
+        {
+            try
+            {
+                return Ok(_repo.GetCategories());
+            }
+            catch (Exception ex)
+            {
+                return NotFound(ex.Message);
+            }
+        }
+        [HttpGet]
+        [Route("GetSubCategories/{categoryId}")]
+        public IActionResult GetSubCategories(string categoryId)
+        {
+            try
+            {
+                return Ok(_repo.GetSubCategories(categoryId));
+            }
+            catch (Exception ex)
+            {
+                return NotFound(ex.Message);
+            }
+        }
     }
 }

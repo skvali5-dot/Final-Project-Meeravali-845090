@@ -45,29 +45,41 @@
                                 <div class="card-body">
                                     <form [formGroup]="RegisterForm3" (ngSubmit)="onSubmit()">    
                                         <div class="form-group">
-                                            <label style="color: whitesmoke;">SubCategory ID</label>
-                                            <input type="text" formControlName="subcategoryid" class="form-control" />
-                                        </div>
-                                        <div class="form-group">
                                             <label style="color: whitesmoke;">SubCategory Name</label>
-                                            <input type="text" formControlName="subcategoryname" class="form-control" />
+                                            <input type="text" formControlName="subcategoryname" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.subcategoryname.errors }" />
+                                            <div *ngIf="submitted && f.subcategoryname.errors" class="invalid-feedback">
+                                                <div *ngIf="f.subcategoryname.errors.required">SubCategoryName is required</div>
+                                            </div>
                                         </div>
                                         <div class="form-group">
-                                            <label style="color: whitesmoke;">Category ID</label>
-                                            <input type="text" formControlName="categoryid" class="form-control" />
+                                            <label style="color: whitesmoke;">Choose Category</label>
+                                            <select formControlName="categoryid" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.categoryid.errors }">
+                                                <option *ngFor="let item of categorylist" value="{{item.categoryId}}">{{item.categoryName}}</option>
+                                            </select>
+                                            <div *ngIf="submitted && f.categoryid.errors" class="invalid-feedback">
+                                                <div *ngIf="f.categoryid.errors.required">CategoryId is required</div>
+                                            </div>
+                                            <!-- <input type="text" formControlName="categoryid" class="form-control" /> -->
                                         </div>
                                         <div class="form-group">
                                             <label style="color: whitesmoke;">Brief Details</label>
-                                            <textarea type="text" formControlName="briefdetails" class="form-control"></textarea>
+                                            <textarea type="text" formControlName="briefdetails" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.briefdetails.errors }"></textarea>
+                                            <div *ngIf="submitted && f.briefdetails.errors" class="invalid-feedback">
+                                                <div *ngIf="f.briefdetails.errors.required">Details about SubCategory is required</div>
+                                            </div>
                                         </div>
                                         <div class="form-group">
                                             <label style="color: whitesmoke;">GST</label>
-                                            <input type="text" formControlName="GST" class="form-control" />
+                                            <input type="text" formControlName="GST" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.GST.errors }" />
+                                            <div *ngIf="submitted && f.GST.errors" class="invalid-feedback">
+                                                <div *ngIf="f.GST.errors.required">GST is required</div>
+                                                <div *ngIf="f.GST.errors.pattern">Enter in NO's Only</div>
+                                            </div>
                                         </div>
                                         <hr class="my-4 bg-success"/>
                                         <div class="form-group">
                                             <div class="text-center">
-                                                <button type="submit" class="btn btn-primary mr-1">Submit</button>
+                                                <button type="submit" class="btn btn-primary mr-1">Add</button>
                                                 <button class="btn btn-secondary" type="reset" (click)="onReset()">Cancel</button>
                                             </div>
                                         </div>

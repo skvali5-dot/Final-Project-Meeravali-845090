@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Buyer } from 'src/app/Models/buyer';
+import {FormGroup,FormBuilder,Validators} from '@angular/forms';
+import { combineLatest } from 'rxjs';
+import { BuyerService } from 'src/app/Services/buyer.service';
 
 @Component({
   selector: 'app-view-profile',
@@ -6,10 +10,56 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./view-profile.component.css']
 })
 export class ViewProfileComponent implements OnInit {
-
-  constructor() { }
-
+    RegisterForm:FormGroup;
+    submitted=false;
+    buyer:Buyer;
+  constructor(private formbuilder:FormBuilder,private service:BuyerService) { }
   ngOnInit() {
+    this.RegisterForm=this.formbuilder.group({
+      id:[''],
+      username:['',[Validators.required,Validators.pattern('^[A-Za-z0-9]{2,20}$')]],
+      password:['',[Validators.required,Validators.pattern('^[a-zA-Z0-9~`!@#$%^&*()-+=]{6,15}$')]],
+      emailid:['',[Validators.required,Validators.email]],
+      mobile:['',[Validators.required,Validators.pattern('^[6-9][0-9]{9}$')]],
+      createddatetime:['']
+    });
+    this.Search();
   }
-
+  onSubmit()
+  {
+    this.submitted=true;
+    if(this.RegisterForm.valid)
+    {
+      this.buyer=new Buyer();
+      this.buyer.id=this.RegisterForm.value["id"],
+      this.buyer.username=this.RegisterForm.value["username"];
+      this.buyer.password=this.RegisterForm.value["password"];
+      this.buyer.emailid=this.RegisterForm.value["emailid"];
+      this.buyer.mobilenumber=this.RegisterForm.value["mobile"];
+      this.buyer.createddatetime=this.RegisterForm.value["createddatetime"];
+      console.log(this.buyer); 
+      this.service.Update(this.buyer).subscribe(res=>{
+        alert('Update was Done Successfull');
+      },err=>{
+        console.log(err);
+      })
+    }
+  }
+  Search()
+  {
+    let id=localStorage.getItem('buyerid');
+    this.service.ViewProfile(id).subscribe(res=>{
+      this.buyer=res;
+      console.log(this.buyer)
+      this.RegisterForm.setValue({
+        id:this.buyer.id,
+        username:this.buyer.username,
+        password:this.buyer.password,
+        emailid:this.buyer.emailid,
+        mobile:this.buyer.mobilenumber,
+        createddatetime:this.buyer.createddatetime
+      })
+    })
+  }
+  get f() { return this.RegisterForm.controls; }
 }

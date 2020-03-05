@@ -28,59 +28,57 @@
       </nav>
     </header>
     <div class="jumbotron">
-        <div class="container offset-4">
+        <div class="container offset-3">
             <div class="row">
-            <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
-                <div class="card card-signin my-5">
-                <h5 class="card-header text-center">Seller Profile</h5>
+            <div class="col-sm-9 col-md-7 col-lg-4 mx-auto">
+                <div class="card card-signin my-5 bg-dark">
+                <h5 class="card-header text-center text-success">Seller Profile</h5>
                 <div class="card-body">
-                    <form [formGroup]="RegisterForm6">
-                           
-                        
+                    <form [formGroup]="RegisterForm6" (ngSubmit)="onSubmit()">       
                     <div class="form-group">
-                        <label>ID</label>
-                        <input type="text" formControlName="id" class="form-control" />
+                        <label style="color: whitesmoke;">ID</label>
+                        <input type="text" formControlName="id" class="form-control" readonly="readonly"/>
                       </div>
                     <div class="form-group">
-                        <label>UserName</label>
+                        <label style="color: whitesmoke;">UserName</label>
                         <input type="text" formControlName="username" class="form-control" />
                     </div>
                     <div class="form-group">
-                      <label>Password</label>
+                      <label style="color: whitesmoke;">Password</label>
                       <input type="password" formControlName="password" class="form-control" />
                   </div>
                   <div class="form-group">
-                    <label>Company Name</label>
+                    <label style="color: whitesmoke;">Company Name</label>
                     <input type="text" formControlName="companyname" class="form-control" />
                 </div>
                 <div class="form-group">
-                    <label>GSTIN</label>
+                    <label style="color: whitesmoke;">GSTIN</label>
                     <input type="text" formControlName="gstin" class="form-control" />
                 </div>
                 <div class="form-group">
-                    <label>Brief_About_Company</label>
+                    <label style="color: whitesmoke;">Brief_About_Company</label>
                     <textarea type="text" formControlName="briefaboutcompany" class="form-control"></textarea>
                 </div>
                 <div class="form-group">
-                    <label>Postal Address</label>
+                    <label style="color: whitesmoke;">Postal Address</label>
                     <input type="text" formControlName="postaladdress" class="form-control" />
                 </div>
                 <div class="form-group">
-                    <label>Website</label>
+                    <label style="color: whitesmoke;">Website</label>
                     <input type="text" formControlName="website" class="form-control" />
                 </div>
                 <div class="form-group">
-                    <label>Email Address</label>
+                    <label style="color: whitesmoke;">Email Address</label>
                     <input type="email" formControlName="emailid" class="form-control" />
                 </div>
                 <div class="form-group">
-                    <label>Contact Number</label>
+                    <label style="color: whitesmoke;">Contact Number</label>
                     <input type="text" formControlName="contactnumber" class="form-control" />
                 </div>
+                <hr class="my-5 bg-success"/>
                 <div class="form-group">
                     <div class="text-center">
-                   
-                    <button class="btn btn-secondary" type="reset" (click)="Update()">Update</button>
+                    <button class="btn btn-primary btn-block" (click)="Update()">Update</button>
                     </div>
                     </div>
                     </form>
@@ -90,7 +88,6 @@
             </div>
             </div>
       </div>
-     
   </body>
   <router-outlet></router-outlet>
 </html>

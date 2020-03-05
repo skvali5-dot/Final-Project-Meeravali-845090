@@ -16,5 +16,6 @@ namespace Emart.BuyerService
         List<PurchaseHistory> PurchaseHistory(string bid);
         List<Category> GetCategories();
         List<SubCategory> GetSubCategories(string cid);
+        List<Items> GetAllItems();
     }
 }

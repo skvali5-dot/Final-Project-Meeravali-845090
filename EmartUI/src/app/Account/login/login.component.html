@@ -24,29 +24,41 @@
                   <div class="card-body">
                     <h5 class="card-title text-center" style="color: whitesmoke;">Sign In</h5>
                       
-                   <!-- <form [formGroup]="itemForm" (ngSubmit)="validate()">
-                      <div class="form-group">
-                        <label for="user">UserName</label>
-                        <input type="text" id="inputEmail" formControlName="username" class="form-control"  placeholder="UserName" required autofocus>
+                   <form [formGroup]="itemForm" (ngSubmit)="validate()">
+                      <div class="form-group" style="text-align: center;">
+                        <label style="color: whitesmoke;"><input type="radio" value="buyer" formControlName="role" name="role">&nbsp;BuyerLogin &nbsp;</label>
+                        <label style="color: whitesmoke;"><input type="radio" value="seller" formControlName="role" name="role" >&nbsp;SellerLogin</label>
+                        </div>  
+                    <div class="form-group">
+                        <label for="user" style="color: whitesmoke;">UserName</label>
+                        <input type="text" id="inputEmail" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" autofocus>
+                        <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                          <div *ngIf="f.username.errors.required">UserName is Required</div>
+                      </div>
                       </div>
                       <div class="form-group">
-                        <label for="password">Password</label>
-                        <input type="password" id="inputPassword" formControlName="password"  class="form-control" placeholder="Password" required>
+                        <label for="password" style="color: whitesmoke;">Password</label>
+                        <input type="password" id="inputPassword" formControlName="password"  class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
+                        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                          <div *ngIf="f.password.errors.required">Password is Required</div>
+                      </div>
                       </div>
                       <div class="form-group">
-                        <button class="btn btn-lg btn-primary btn-block text-uppercase" (click)="validate()" type="submit">Sign in</button>
+                        <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Sign in</button>
                         <hr class="my-4">
                       </div>
-                        <a [routerLink]="'/register-buyer'">Buyer SignUp</a>
-                        <a [routerLink]="'/register-seller'">Seller SignUp</a>
-                    </form>-->
-                    <div class="form-group">
+                      </form>
+                      <div class="text-center">
+                          <a [routerLink]="'/register-buyer'">Buyer SignUp</a>&nbsp;
+                          <a [routerLink]="'/register-seller'">Seller SignUp</a>
+                      </div>
+                      <!-- <div class="form-group">
                       <label for="user" style="color: whitesmoke;">UserName</label>
-                      <input type="text" id="inputEmail" [(ngModel)]="username" class="form-control"  placeholder="UserName" required autofocus>
+                      <input type="text" id="inputEmail" [(ngModel)]="user" class="form-control"  placeholder="UserName" required autofocus>
                     </div>
                     <div class="form-group">
-                      <label for="password" style="color: whitesmoke;">Password</label>
-                      <input type="password" id="inputPassword" [(ngModel)]="password"  class="form-control" placeholder="Password" required>
+                      <label for="pass" style="color: whitesmoke;">Password</label>
+                      <input type="password" id="inputPassword" [(ngModel)]="pass"  class="form-control" placeholder="Password" required>
                     </div>
                     <div class="form-group">
                       <button class="btn btn-lg btn-primary btn-block text-uppercase" (click)="validate()" type="submit">Sign in</button>
@@ -56,6 +68,7 @@
                       <a [routerLink]="'/register-buyer'">Buyer SignUp</a>&nbsp;
                       <a [routerLink]="'/register-seller'">Seller SignUp</a>
                     </div>
+                    </div> -->
                     </div>
                 </div>
               </div>

@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder ,Validators} from '@angular/forms';
 import {SubCategory} from 'src/app/Models/sub-category';
 import { combineLatest } from 'rxjs';
 import { AdminService } from 'src/app/Services/admin.service';
+import { Category } from 'src/app/Models/category';
 
 @Component({
   selector: 'app-add-sub-category',
@@ -14,15 +15,20 @@ export class AddSubCategoryComponent implements OnInit {
   RegisterForm3:FormGroup;
   submitted=false;
   subcategory:SubCategory;
-  constructor(private formBuilder:FormBuilder,private service:AdminService) { }
+  categorylist:Category[];
+  constructor(private formBuilder:FormBuilder,private service:AdminService) { 
+    this.service.GetAllCategories().subscribe(res=>{
+      this.categorylist=res;
+      console.log(this.categorylist);
+    })
+  }
 
   ngOnInit() {
     this.RegisterForm3=this.formBuilder.group({
-      subcategoryid:[''],
-      subcategoryname:[''],
-      categoryid:[''],
-      briefdetails:[''],
-      GST:['']
+      subcategoryname:['',Validators.required],
+      categoryid:['',Validators.required],
+      briefdetails:['',Validators.required],
+      GST:['',[Validators.required,Validators.pattern('^[0-9]{1,3}$')]]
     });
   }
   onSubmit()
@@ -31,18 +37,20 @@ export class AddSubCategoryComponent implements OnInit {
       if(this.RegisterForm3.valid)
       {
         this.subcategory=new SubCategory();
-        this.subcategory.subcategoryid=this.RegisterForm3.value["subcategoryid"];
+        this.subcategory.subcategoryid='SC'+Math.round(Math.random()*1000);
         this.subcategory.subcategoryname=this.RegisterForm3.value["subcategoryname"];
         this.subcategory.categoryid=this.RegisterForm3.value["categoryid"];
         this.subcategory.briefdetails=this.RegisterForm3.value["briefdetails"];
         this.subcategory.GST=Number(this.RegisterForm3.value["GST"]);
         console.log(this.subcategory);
+        alert('SubCategory Added Successfully');
       this.service.AddSubCategory(this.subcategory).subscribe(res=>{
       },err=>{
         console.log(err);
       })
       }
   }
+  get f() { return this.RegisterForm3.controls; }
   onReset(){
     this.submitted=false;
   this.RegisterForm3.reset();

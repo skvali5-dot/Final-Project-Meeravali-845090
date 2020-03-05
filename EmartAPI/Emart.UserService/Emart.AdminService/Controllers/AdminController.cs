@@ -74,5 +74,19 @@ namespace Emart.AdminService.Controllers
                 return NotFound(ex.Message);
             }
         }
+        [HttpGet]
+        [Route("GetAllCategories")]
+        public IActionResult GetAllCategories() 
+        {
+            try
+            {
+               return Ok(_repo.GetAllCategories());
+               
+            }
+            catch(Exception ex)
+            {
+                return NotFound(ex.Message);
+            }
+        }
     }
 }

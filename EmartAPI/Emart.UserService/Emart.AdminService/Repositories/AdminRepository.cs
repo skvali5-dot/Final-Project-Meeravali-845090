@@ -38,5 +38,10 @@ namespace Emart.AdminService.Repositories
             _context.SubCategory.Remove(subcategory);
             _context.SaveChanges();
         }
+
+        public List<Category> GetAllCategories()
+        {
+            return _context.Category.ToList();
+        }
     }
 }

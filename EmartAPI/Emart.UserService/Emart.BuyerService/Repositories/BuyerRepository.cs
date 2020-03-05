@@ -25,6 +25,11 @@ namespace Emart.BuyerService.Repositories
             _context.SaveChanges();
         }
 
+        public List<Items> GetAllItems()
+        {
+            return _context.Items.ToList();
+        }
+
         public List<Category> GetCategories()
         {
             return _context.Category.ToList();

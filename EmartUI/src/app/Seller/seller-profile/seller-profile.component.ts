@@ -15,7 +15,7 @@ export class SellerProfileComponent implements OnInit {
   submitted=false;
   lists:Seller[];
   seller:Seller;
-  constructor(private formbuilder:FormBuilder,private service:SellerService) { 
+  constructor(private formbuilder:FormBuilder,private service:SellerService) {  
   }
 
   ngOnInit() {
@@ -31,13 +31,16 @@ export class SellerProfileComponent implements OnInit {
     emailid:[''],
     contactnumber:['']
   });
-this.Search()
+  this.Search();
+}
+onSubmit(){
+  this.submitted=true;
 }
 Search()
   {
-    this.submitted=true;
+    let id=localStorage.getItem('sellerid');
     //  let id1=this.RegisterForm6.value["id"];
-      this.service.ViewProfile("S001").subscribe(res=>{
+      this.service.ViewProfile(id).subscribe(res=>{
         this.seller=res;
         console.log(this.seller);
         this.RegisterForm6.setValue({

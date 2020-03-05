@@ -37,48 +37,75 @@
                             <div class="card-body">
                                 <form [formGroup]="RegisterForm4" (ngSubmit)="onSubmit()">    
                                     <div class="form-group">
-                                        <label style="color: whitesmoke;">Item ID</label>
-                                        <input type="text" formControlName="id" class="form-control" />
+                                        <label style="color: whitesmoke;">Choose Category</label>
+                                        <!-- <input type="text" formControlName="categoryId" class="form-control" /> -->
+                                        <select formControlName="categoryId" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.categoryId.errors }" (change)="GetSubCategory()">
+                                             <option *ngFor="let item of clist" value="{{item.categoryId}}">{{item.categoryName}}</option>   
+                                        </select>
+                                        <div *ngIf="submitted && f.categoryId.errors" class="invalid-feedback">
+                                            <div *ngIf="f.categoryId.errors.required">Please Select categoryId</div>
+                                        </div>
                                     </div>
                                     <div class="form-group">
-                                        <label style="color: whitesmoke;">Category ID</label>
-                                        <input type="text" formControlName="categoryId" class="form-control" />
+                                        <label style="color: whitesmoke;">Choose SubCategory</label>
+                                        <!-- <input type="text" formControlName="subcategoryId" class="form-control" /> -->
+                                        
+                                        <select formControlName="subcategoryId" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.subcategoryId.errors }">
+                                            <option *ngFor="let item1 of sclist" value="{{item1.subcategoryId}}">{{item1.subcategoryName}}</option>   
+                                       </select>
+                                       <div *ngIf="submitted && f.subcategoryId.errors" class="invalid-feedback">
+                                        <div *ngIf="f.subcategoryId.errors.required">Please Select subcategoryId</div>
                                     </div>
-                                    <div class="form-group">
-                                        <label style="color: whitesmoke;">SubCategory ID</label>
-                                        <input type="text" formControlName="subcategoryId" class="form-control" />
                                     </div>
                                     <div class="form-group">
                                         <label style="color: whitesmoke;">Seller ID</label>
-                                        <input type="text" formControlName="sellerid" class="form-control" />
+                                        <input type="text" formControlName="sellerid" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.sellerid.errors }"/>
+                                        <div *ngIf="submitted && f.sellerid.errors" class="invalid-feedback">
+                                            <div *ngIf="f.sellerid.errors.required">Please Provide SellerId</div>
+                                        </div>
                                     </div>
                                     <div class="form-group">
                                         <label style="color: whitesmoke;">Item Name</label>
-                                        <input type="text" formControlName="itemName" class="form-control" />
+                                        <input type="text" formControlName="itemName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.itemName.errors }"/>
+                                        <div *ngIf="submitted && f.itemName.errors" class="invalid-feedback">
+                                            <div *ngIf="f.itemName.errors.required">Please Provide ItemName</div>
+                                        </div>
                                     </div>
                                     <div class="form-group">
                                         <label style="color: whitesmoke;">Price</label>
-                                        <input type="text" formControlName="price" class="form-control" />
+                                        <input type="text" formControlName="price" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.price.errors }"/>
+                                        <div *ngIf="submitted && f.price.errors" class="invalid-feedback">
+                                            <div *ngIf="f.price.errors.required">Please Enter the Price</div>
+                                            <div *ngIf="f.price.errors.pattern">Please Enter Price in No's</div>
+                                        </div>
                                     </div>
                                     <div class="form-group">
                                         <label style="color: whitesmoke;">Description</label>
-                                        <textarea type="text" formControlName="description" class="form-control"></textarea>
+                                        <textarea type="text" formControlName="description" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.description.errors }"></textarea>
+                                        <div *ngIf="submitted && f.description.errors" class="invalid-feedback">
+                                            <div *ngIf="f.description.errors.required">Please Provide Description</div>
+                                        </div>
                                     </div>
                                     <div class="form-group">
                                         <label style="color: whitesmoke;">Stock Number</label>
-                                        <input type="text" formControlName="stockNumber" class="form-control" />
+                                        <input type="text" formControlName="stockNumber" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.stockNumber.errors }" />
+                                        <div *ngIf="submitted && f.stockNumber.errors" class="invalid-feedback">
+                                            <div *ngIf="f.stockNumber.errors.required">Stock Number is Required</div>
+                                            <div *ngIf="f.stockNumber.errors.pattern">Stock Should be in No's only</div>
+                                        </div>
                                     </div>
                                     <div class="form-group">
                                         <label style="color: whitesmoke;">Remarks</label>
-                                        <input type="text" formControlName="remarks" class="form-control" />
+                                        <input type="text" formControlName="remarks" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.remarks.errors }" />
+                                        <div *ngIf="submitted && f.remarks.errors" class="invalid-feedback">
+                                            <div *ngIf="f.remarks.errors.required">Please Add Any Remarks</div>
+                                        </div>
                                     </div>
                                     <hr class="my-4 bg-success"/>
                                     <div class="form-group">
                                         <div class="text-center">
                                             <button type="submit" class="btn btn-lg btn-primary btn-block text-uppercase">Add Item</button>
                                             <button class="btn btn-lg btn-primary btn-block text-uppercase" type="reset" (click)="onReset()">Cancel</button>
-                                            <button class="btn btn-lg btn-primary btn-block text-uppercase" (click)="Search()">Search</button>
-                                            <button type="submit" class="btn btn-lg btn-primary btn-block text-uppercase" (click)="Update()">Update</button>
                                         </div>
                                     </div>
                                 </form>

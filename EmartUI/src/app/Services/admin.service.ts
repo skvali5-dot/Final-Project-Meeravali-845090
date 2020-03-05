@@ -4,7 +4,8 @@ import {Observable} from 'rxjs';
 import { Category } from 'src/app/Models/category';
 import { SubCategory } from 'src/app/Models/sub-category';
 const Requestheaders={headers:new HttpHeaders({
-  'Content-type':'application/json'
+  'Content-type':'application/json',
+  'Authorization':'Bearer'+localStorage.getItem('token')
 })}
 
 @Injectable({
@@ -19,5 +20,9 @@ export class AdminService {
   }
   public AddSubCategory(subcategory:SubCategory):Observable<any>{
     return this.http.post<any>(this.url+'AddSubCategory',subcategory,Requestheaders);
+  }
+  public GetAllCategories():Observable<any>
+  {
+    return this.http.get<any>(this.url+'GetAllCategories',Requestheaders);
   }
 }

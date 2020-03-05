@@ -19,9 +19,8 @@ export class RegisterBuyerComponent implements OnInit {
 
   ngOnInit() {
       this.RegisterForm=this.formbuilder.group({
-      id:['',[Validators.required,Validators.pattern('^[0-9A-Za-z]{4}$')]],
       username:['',[Validators.required,Validators.pattern('^[A-Za-z0-9]{2,20}$')]],
-      password:['',[Validators.required,Validators.pattern('^[a-zA-Z0-9]{4,10}[~`!@#$%^&*()-+=]$')]],
+      password:['',[Validators.required,Validators.pattern('^[a-zA-Z0-9~`!@#$%^&*()-+=]{6,15}$')]],
       emailid:['',[Validators.required,Validators.email]],
       mobile:['',[Validators.required,Validators.pattern('^[6-9][0-9]{9}$')]],
       createddatetime:['']
@@ -34,17 +33,17 @@ export class RegisterBuyerComponent implements OnInit {
     if(this.RegisterForm.valid)
     {
       this.buyer=new Buyer();
-      this.buyer.id=this.RegisterForm.value["id"];
+      this.buyer.id='B'+Math.round(Math.random()*999);
       this.buyer.username=this.RegisterForm.value["username"];
       this.buyer.password=this.RegisterForm.value["password"];
       this.buyer.emailid=this.RegisterForm.value["emailid"];
       this.buyer.mobilenumber=this.RegisterForm.value["mobile"];
       this.buyer.createddatetime=this.RegisterForm.value["createddatetime"];
       console.log(this.buyer); 
+      alert('Registration Successfull');
       this.service.BuyerSignup(this.buyer).subscribe(res=>{
         this.buyer=res;
         console.log(this.buyer);
-        alert('Registration Successfull');
       },err=>{
         console.log(err);
       })

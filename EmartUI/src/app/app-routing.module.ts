@@ -30,14 +30,13 @@ const routes: Routes = [
     {path:'block-or-unblock-seller',component:BlockOrUnblockSellerComponent},
     {path:'daily-reports',component:DailyReportsComponent},
     {path:'add-category',component:AddCategoryComponent},
-  {path:'app',component:AppComponent},
-  {path:'buyer-landing-page',component:BuyerLandingPageComponent,children:[
+    {path:'app',component:AppComponent},
+    {path:'buyer-landing-page',component:BuyerLandingPageComponent},
     {path:'buy-product',component:BuyProductComponent},
     {path:'purchase-history',component:PurchaseHistoryComponent},
     {path:'search',component:SearchComponent},
     {path:'view-cart',component:ViewCartComponent},
-    {path:'view-profile',component:ViewProfileComponent}
-  ]},
+    {path:'view-profile',component:ViewProfileComponent},
   {path:'seller-landing-page',component:SellerLandingPageComponent},
     {path:'add-items',component:AddItemsComponent},
     {path:'view-items',component:ViewItemsComponent},

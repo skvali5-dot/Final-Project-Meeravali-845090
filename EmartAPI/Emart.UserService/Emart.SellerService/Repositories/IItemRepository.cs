@@ -13,5 +13,7 @@ namespace Emart.SellerService.Repositories
         string ViewStock(string id);
         List<Items> ViewItems(string id);
         Items GetItem(string id);
+        List<Category> GetCategories();
+        List<SubCategory> GetSubCategories(string cid);
     }
 }

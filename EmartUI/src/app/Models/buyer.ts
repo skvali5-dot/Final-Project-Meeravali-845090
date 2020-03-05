@@ -1,7 +1,7 @@
 import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/testing';
 
 export class Buyer {
-    id:number;
+    id:string;
     username:string;
     password:string;
     emailid:string;

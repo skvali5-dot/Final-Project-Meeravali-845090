@@ -33,16 +33,15 @@ export class RegisterSellerComponent implements OnInit {
       contactnumber:['',[Validators.required,Validators.pattern('^[6-9][0-9]{9}$')]]
   });*/
   this.RegisterForm1=this.formbuilder.group({
-    id:[''],
-    username:[''],
-    password:[''],
-    companyname:[''],
-    GSTIN:[''],
-    briefaboutcompany:[''],
-    postaladdress:[''],
-    website:[''],
-    emailid:[''],
-    contactnumber:['']
+    username:['',[Validators.required,Validators.pattern('^[a-z0-9A-Z@_]{2,30}$')]],
+    password:['',[Validators.required,Validators.pattern('^[a-zA-Z0-9~`!@#$%^&*()-+=]{6,15}$')]],
+    companyname:['',[Validators.required,Validators.pattern('^[a-zA-Z]{3,20}$')]],
+    GSTIN:['',[Validators.required,Validators.pattern('^[a-zA-Z]{2,10}$')]],
+    briefaboutcompany:['',[Validators.required,Validators.pattern('^[a-zA-z0-9]{2,150}$')]],
+    postaladdress:['',[Validators.required,Validators.pattern('^[0-9]{6}$')]],
+    website:['',[Validators.required]],
+    emailid:['',[Validators.required,Validators.email]],
+    contactnumber:['',[Validators.required,Validators.pattern('^[6-9][0-9]{9}$')]]
   });
 
 }
@@ -52,7 +51,7 @@ export class RegisterSellerComponent implements OnInit {
     if(this.RegisterForm1.valid)
     {
       this.seller=new Seller();
-      this.seller.id=this.RegisterForm1.value["id"];
+      this.seller.id='S'+Math.round(Math.random()*999);
       this.seller.username=this.RegisterForm1.value["username"];
       this.seller.password=this.RegisterForm1.value["password"];
       this.seller.companyname=this.RegisterForm1.value["companyname"];
@@ -63,6 +62,7 @@ export class RegisterSellerComponent implements OnInit {
       this.seller.emailid=this.RegisterForm1.value["emailid"];
       this.seller.contactnumber=this.RegisterForm1.value["contactnumber"];   
       console.log(this.seller);
+      alert('Registration Successfull');
       this.service.SellerSignUp(this.seller).subscribe(res=>{
          this.seller=res;
          console.log(this.seller);

@@ -24,9 +24,21 @@ namespace Emart.SellerService.Repositories
             _context.Items.Remove(item);
             _context.SaveChanges();
         }
+
+        public List<Category> GetCategories()
+        {
+            return _context.Category.ToList();
+        }
+
         public Items GetItem(string id)
         {
             return _context.Items.Find(id);
+        }
+
+        public List<SubCategory> GetSubCategories(string cid)
+        {
+            List<SubCategory> subcategory = _context.SubCategory.Where(i=>i.CategoryId==cid).ToList();
+            return subcategory;
         }
 
         public void UpdateItemStock(Items item)
