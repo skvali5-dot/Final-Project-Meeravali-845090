@@ -19,6 +19,7 @@ namespace Emart.AdminService.Models
         public string Description { get; set; }
         public string StockNumber { get; set; }
         public string Remarks { get; set; }
+        public string Imagename { get; set; }
 
         public virtual Category Category { get; set; }
         public virtual Seller Seller { get; set; }

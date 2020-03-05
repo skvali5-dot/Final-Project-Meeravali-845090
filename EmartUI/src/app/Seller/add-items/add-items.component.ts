@@ -17,9 +17,12 @@ export class AddItemsComponent implements OnInit {
   RegisterForm4:FormGroup;
   submitted=false;
   items:Items;
+  list:Items[];
   clist:Category[];
   sclist:SubCategory[];
   cid:string;
+  imagename:string;
+  selectedFile : File = null;
   constructor(private formBuilder:FormBuilder,private service:SellerService,private route:Router) { 
     this.service.GetCategories().subscribe(res=>{
       this.clist=res;
@@ -30,7 +33,6 @@ export class AddItemsComponent implements OnInit {
     this.RegisterForm4=this.formBuilder.group({
       categoryId:['',Validators.required],
       subcategoryId:['',Validators.required],
-      sellerid:['',Validators.required],
       itemName:['',Validators.required],
       price:['',[Validators.required,Validators.pattern('^[0-9]{1,8}$')]],
       description:['',Validators.required],
@@ -43,23 +45,29 @@ export class AddItemsComponent implements OnInit {
       this.submitted=true;
       if(this.RegisterForm4.valid)
       {
+        let sid=localStorage.getItem('sellerid')
         this.items=new Items();
         this.items.id='I'+Math.round(Math.random()*1000);
         this.items.categoryId=this.RegisterForm4.value["categoryId"];
         this.items.subcategoryId=this.RegisterForm4.value["subcategoryId"];
-        this.items.sellerid=this.RegisterForm4.value["sellerid"];
+        this.items.sellerid=sid;
         this.items.itemName=this.RegisterForm4.value["itemName"];
         this.items.price=this.RegisterForm4.value["price"];
         this.items.description=this.RegisterForm4.value["description"];
         this.items.stockNumber=this.RegisterForm4.value["stockNumber"];
         this.items.remarks=this.RegisterForm4.value["remarks"];
+        this.items.imagename=this.imagename;
         console.log(this.items);
         this.service.AddItems(this.items).subscribe(res=>{
+          console.log(this.items);
         }
         ,err=>{
         console.log(err);
         })
       }
+  }
+  fileEvent(event){
+    this.imagename = event.target.files[0].name;
   }
   // Search()
   // {

@@ -5,7 +5,7 @@
     <header>
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
       <!-- Brand -->
-      <a class="navbar-brand" href="#">Logo</a>
+      <a class="navbar-brand" [routerLink]="'/buyer-landing-page'">Emart</a>
     
       <!-- Links -->
       <ul class="navbar-nav">
@@ -21,6 +21,9 @@
         <li class="nav-item">
           <a class="nav-link" [routerLink]="'/buy-product'">Buy</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="'/search'">Search</a>
+        </li>
         <!-- Dropdown -->
         <!--<li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
@@ -33,10 +36,6 @@
           </div>
         </li>-->
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
         <div class="topnav-right"> 
              <button class="btn btn-danger" (click)="Logout()">SignOut</button>
         </div>
@@ -86,13 +85,13 @@
               </div>
             </div>&nbsp;
           </div> -->
-          <div class="container">
+          <br/>
           <div class="row">
           <div class="card-deck">
-            <div class="card" *ngFor="let item of list" style="width: 18rem;" >
-              <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
-              <h5 class="card-title">{{item.itemName}}</h5>
-              <div class="card-body">
+            <div class="card col-lg-4 bg-dark" *ngFor="let item of list" style="width: 25rem;" >
+              <img class="card-img-top" src="/assets/Images/{{item.imagename}}" alt="Card image cap"><br/>
+              <h5 class="card-title" style="color: whitesmoke;">{{item.itemName}}</h5>
+              <div class="card-body" style="color: whitesmoke;">
                 ItemId:{{item.id}}<br/>
                 CategoryId:{{item.categoryId}}<br/>
                 SubCategoryId:{{item.subcategoryId}}<br/>
@@ -105,7 +104,6 @@
             </div>
           </div>
         </div>
-          </div>
     </main>
     <router-outlet></router-outlet>
   </body>

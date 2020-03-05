@@ -15,7 +15,6 @@ export class ViewItemsComponent implements OnInit {
   isShow:boolean=true;
   constructor(private service:SellerService,private formBuilder:FormBuilder) { 
   }
-
   ngOnInit() {
     this.RegisterForm7=this.formBuilder.group({
       id:[''],
@@ -26,7 +25,8 @@ export class ViewItemsComponent implements OnInit {
       itemName:[''],
       description:[''],
       stockNumber:[''],
-      remarks:['']
+      remarks:[''],
+      imagename:['']
     });
     this.ViewItems();
   }
@@ -62,7 +62,8 @@ export class ViewItemsComponent implements OnInit {
         price:this.items.price,
         description:this.items.description,
         stockNumber:this.items.stockNumber,
-        remarks:this.items.remarks
+        remarks:this.items.remarks,
+        imagename:this.items.imagename
       })
     })
   }
@@ -79,6 +80,7 @@ export class ViewItemsComponent implements OnInit {
     this.items.description=this.RegisterForm7.value["description"];
     this.items.stockNumber=this.RegisterForm7.value["stockNumber"];
     this.items.remarks=this.RegisterForm7.value["remarks"];
+    this.items.imagename=this.RegisterForm7.value["imagename"]
     console.log(this.items);
   this.service.UpdateItems(this.items).subscribe(res=>{
     console.log('Record Updated');

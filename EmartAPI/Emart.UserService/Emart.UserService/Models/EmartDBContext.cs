@@ -155,6 +155,11 @@ namespace Emart.UserService.Models
                     .HasMaxLength(250)
                     .IsUnicode(false);
 
+                entity.Property(e => e.Imagename)
+                    .HasColumnName("imagename")
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
                 entity.Property(e => e.ItemName)
                     .IsRequired()
                     .HasColumnName("item_name")

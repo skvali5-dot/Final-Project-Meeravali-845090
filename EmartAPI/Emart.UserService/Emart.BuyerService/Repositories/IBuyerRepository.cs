@@ -17,5 +17,6 @@ namespace Emart.BuyerService
         List<Category> GetCategories();
         List<SubCategory> GetSubCategories(string cid);
         List<Items> GetAllItems();
+
     }
 }

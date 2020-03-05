@@ -4,7 +4,7 @@
     <header>
       <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
         <!-- Brand -->
-        <a class="navbar-brand" href="#">Logo</a>
+        <a class="navbar-brand" [routerLink]="'/seller-landing-page'">Emart</a>
         <!-- Links -->
         <ul class="navbar-nav">
             <li class="nav-item">
@@ -58,13 +58,6 @@
                                     </div>
                                     </div>
                                     <div class="form-group">
-                                        <label style="color: whitesmoke;">Seller ID</label>
-                                        <input type="text" formControlName="sellerid" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.sellerid.errors }"/>
-                                        <div *ngIf="submitted && f.sellerid.errors" class="invalid-feedback">
-                                            <div *ngIf="f.sellerid.errors.required">Please Provide SellerId</div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
                                         <label style="color: whitesmoke;">Item Name</label>
                                         <input type="text" formControlName="itemName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.itemName.errors }"/>
                                         <div *ngIf="submitted && f.itemName.errors" class="invalid-feedback">
@@ -93,13 +86,17 @@
                                             <div *ngIf="f.stockNumber.errors.required">Stock Number is Required</div>
                                             <div *ngIf="f.stockNumber.errors.pattern">Stock Should be in No's only</div>
                                         </div>
-                                    </div>
+                                    </div>            
                                     <div class="form-group">
                                         <label style="color: whitesmoke;">Remarks</label>
                                         <input type="text" formControlName="remarks" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.remarks.errors }" />
                                         <div *ngIf="submitted && f.remarks.errors" class="invalid-feedback">
                                             <div *ngIf="f.remarks.errors.required">Please Add Any Remarks</div>
                                         </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label style="color: whitesmoke;">Image</label><br>
+                                        <input type="file" (change)="fileEvent($event)"/>
                                     </div>
                                     <hr class="my-4 bg-success"/>
                                     <div class="form-group">
