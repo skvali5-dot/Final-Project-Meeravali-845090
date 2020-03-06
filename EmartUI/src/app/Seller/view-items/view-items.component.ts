@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SellerService } from 'src/app/Services/seller.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import {Items} from "src/app/Models/items";
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-view-items',
   templateUrl: './view-items.component.html',
@@ -13,7 +14,7 @@ export class ViewItemsComponent implements OnInit {
   list:Items[];
   items:Items;
   isShow:boolean=true;
-  constructor(private service:SellerService,private formBuilder:FormBuilder) { 
+  constructor(private service:SellerService,private formBuilder:FormBuilder,private route:Router) { 
   }
   ngOnInit() {
     this.RegisterForm7=this.formBuilder.group({
@@ -45,12 +46,9 @@ export class ViewItemsComponent implements OnInit {
   Search1(){
     this.isShow=!this.isShow;
   }
-  Search()
+  Search(id:string)
   {
-    // this.isShow=!this.isShow;
-     let id1=this.RegisterForm7.value["id"];
-    console.log(id1);
-    this.service.GetItem(id1).subscribe(res=>{
+    this.service.GetItem(id).subscribe(res=>{
       this.items=res;
       console.log(this.items);
       this.RegisterForm7.setValue({
@@ -69,7 +67,6 @@ export class ViewItemsComponent implements OnInit {
   }
   Update()
   {
-    // this.isShow=!this.isShow;
     this.items=new Items();
     this.items.id=this.RegisterForm7.value["id"];
     this.items.categoryId=this.RegisterForm7.value["categoryId"];
@@ -90,11 +87,13 @@ export class ViewItemsComponent implements OnInit {
     console.log(err);
   })
   }
-  Delete(){
-    let iid=this.RegisterForm7.value["id"];
-    this.service.DeleteItem(iid).subscribe(res=>{
+  Delete(id:string){
+    this.service.DeleteItem(id).subscribe(res=>{
       alert('Record Deleted');
     })
   }
-
+  Logout(){
+    localStorage.clear();
+    this.route.navigateByUrl('/login');
+  }
 }

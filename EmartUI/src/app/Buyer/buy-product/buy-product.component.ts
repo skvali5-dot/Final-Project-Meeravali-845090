@@ -5,6 +5,8 @@ import { BuyerService } from 'src/app/Services/buyer.service';
 import { Items } from 'src/app/Models/items';
 import { PurchaseHistory } from 'src/app/Models/purchase-history';
 import { DatePipe } from '@angular/common';
+import { Router } from '@angular/router';
+import { Cart } from 'src/app/Models/cart';
 
 
 @Component({
@@ -14,8 +16,9 @@ import { DatePipe } from '@angular/common';
 })
 export class BuyProductComponent implements OnInit {
   RegisterForm:FormGroup;
-  constructor(private service:BuyerService,private formBuilder:FormBuilder) { }
+  constructor(private service:BuyerService,private formBuilder:FormBuilder,private route:Router) { }
   item:Items;
+  cart:Cart;
   obj:PurchaseHistory;
   ngOnInit() {
     this.RegisterForm=this.formBuilder.group({
@@ -47,7 +50,18 @@ export class BuyProductComponent implements OnInit {
      this.service.BuyItem(this.obj).subscribe(res=>{
        console.log("Purchase was Sucessfull");
        alert('Purchase Done Successfully');
+       this.Delete();
      })
     }
-
+    Delete(){
+      console.log(this.item.id);
+      let id=this.item.id
+      this.service.RemoveCartItem(id).subscribe(res=>{
+        console.log('Cart item Removed');
+      })
+    }
+Logout(){
+  localStorage.clear();
+  this.route.navigateByUrl('/login');
+}
 }

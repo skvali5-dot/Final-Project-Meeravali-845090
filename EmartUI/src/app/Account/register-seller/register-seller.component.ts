@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder ,Validators} from '@angular/forms';
 import {Seller} from 'src/app/Models/seller';
 import { AccountService } from 'src/app/Services/account.service';
 import { combineLatest } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register-seller',
@@ -15,7 +16,7 @@ export class RegisterSellerComponent implements OnInit {
   submitted=false;
   lists:Seller[];
   seller:Seller;
-  constructor(private formbuilder:FormBuilder,private service:AccountService) { 
+  constructor(private formbuilder:FormBuilder,private service:AccountService,private route:Router) { 
   }
 
   ngOnInit() {

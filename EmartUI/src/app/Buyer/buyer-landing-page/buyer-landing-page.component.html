@@ -70,25 +70,11 @@
               </table>
           </div> -->
           
-            <!-- <div class="row" style="padding: 6%;">
-            <div class="card" style="width: 18rem;" *ngFor="let item of list">
-              <div class="card-body">
-                <h5 class="card-title">{{item.itemName}}</h5>
-                ItemId:{{item.id}}<br/>
-                CategoryId:{{item.categoryId}}<br/>
-                SubCategoryId:{{item.subcategoryId}}<br/>
-                 SellerId: {{item.sellerid}}<br/>
-                 Price: {{item.price}}<br/>
-                  Description:{{item.description}}<br/>
-                  Stock Number:{{item.stockNumber}}<br/>
-                  Remarks:{{item.remarks}}     
-              </div>
-            </div>&nbsp;
-          </div> -->
+         
           <br/>
-          <div class="row">
-          <div class="card-deck">
-            <div class="card col-lg-4 bg-dark" *ngFor="let item of list" style="width: 25rem;" >
+          <!-- <div class="container">
+           <div class="row">
+            <div class="card col-3 bg-dark" *ngFor="let item of list" style="width: 250px;">
               <img class="card-img-top" src="/assets/Images/{{item.imagename}}" alt="Card image cap"><br/>
               <h5 class="card-title" style="color: whitesmoke;">{{item.itemName}}</h5>
               <div class="card-body" style="color: whitesmoke;">
@@ -102,8 +88,42 @@
                   Remarks:{{item.remarks}}     
               </div>
             </div>
+            &nbsp;
           </div>
-        </div>
+          </div>
+ -->
+
+          <div class="container">
+            <div class="row">
+              <div class="col-md-3" *ngFor="let item of list">
+                  <div class="card bg-dark" style="width:250px;height: 500px;" >
+                    <h5 class="card-title" style="color: whitesmoke;">{{item.itemName}}</h5>
+                     <img class="card-img mx-5" id="i1" src="/assets/Images/{{item.imagename}}" style="width: 150px;height:150px;" alt="Card image cap"> 
+                      <div class="card-body" style="color: whitesmoke;">
+                        ItemId:{{item.id}}<br/>
+                        CategoryId:{{item.categoryId}}<br/>
+                        SubCategoryId:{{item.subcategoryId}}<br/>
+                         SellerId: {{item.sellerid}}<br/>
+                         Price: {{item.price}}<br/>
+                          Description:{{item.description}}<br/>
+                          Stock Number:{{item.stockNumber}}<br/>
+                          Remarks:{{item.remarks}}     
+                    </div>
+                 
+                    <div class="card-footer">
+                      <div class="text-center">
+                        <button class="btn btn-primary mr-1" >Buy Now</button>
+                        <button class="btn btn-outline-info" >AddToCart</button>
+                    </div>
+                    
+                    </div>
+                    
+                  </div>
+                  <br>
+                </div>
+              </div>
+            </div>
+
     </main>
     <router-outlet></router-outlet>
   </body>

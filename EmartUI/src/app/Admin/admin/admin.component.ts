@@ -13,6 +13,7 @@ export class AdminComponent implements OnInit {
   ngOnInit() {
   }
 Logout(){
+  localStorage.clear();
   this.route.navigateByUrl('login');
 }
 }

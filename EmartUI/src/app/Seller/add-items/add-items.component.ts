@@ -60,6 +60,7 @@ export class AddItemsComponent implements OnInit {
         console.log(this.items);
         this.service.AddItems(this.items).subscribe(res=>{
           console.log(this.items);
+          alert('Item Added Successfully');
         }
         ,err=>{
         console.log(err);
@@ -69,51 +70,14 @@ export class AddItemsComponent implements OnInit {
   fileEvent(event){
     this.imagename = event.target.files[0].name;
   }
-  // Search()
-  // {
-  //   let id1=this.RegisterForm4.value["id"];
-  //   console.log(id1);
-  //   this.service.GetItem(id1).subscribe(res=>{
-  //     this.items=res;
-  //     console.log(this.items);
-  //     this.RegisterForm4.setValue({
-  //       categoryId:this.items.categoryId,
-  //       subcategoryId:this.items.subcategoryId,
-  //       sellerid:this.items.sellerid,
-  //       itemName:this.items.itemName,
-  //       price:this.items.price,
-  //       description:this.items.description,
-  //       stockNumber:this.items.stockNumber,
-  //       remarks:this.items.remarks
-  //     })
-  //   })
-  // }
-  // Update()
-  // {
-  //   this.items=new Items();
-  //   this.items.id=this.RegisterForm4.value["id"];
-  //   this.items.categoryId=this.RegisterForm4.value["categoryId"];
-  //   this.items.subcategoryId=this.RegisterForm4.value["subcategoryId"];
-  //   this.items.sellerid=this.RegisterForm4.value["sellerid"];
-  //   this.items.itemName=this.RegisterForm4.value["itemName"];
-  //   this.items.price=this.RegisterForm4.value["price"];
-  //   this.items.description=this.RegisterForm4.value["description"];
-  //   this.items.stockNumber=this.RegisterForm4.value["stockNumber"];
-  //   this.items.remarks=this.RegisterForm4.value["remarks"];
-  //   console.log(this.items);
-  // this.service.UpdateItems(this.items).subscribe(res=>{
-  //   console.log('Record Updated');
-  // }
-  // ,err=>{
-  //   console.log(err);
-  // })
-  // }
+  
   get f() { return this.RegisterForm4.controls; }
   onReset(){
     this.submitted=false;
   this.RegisterForm4.reset();
   }
   Logout(){
+    localStorage.clear();
     this.route.navigateByUrl('/login');
   }
   GetSubCategory()

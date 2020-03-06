@@ -150,5 +150,46 @@ namespace Emart.BuyerService.Controllers
                 return NotFound(ex.Message);
             }
         }
+        [HttpPost]
+        [Route("AddtoCart")]
+        public IActionResult AddtoCart(Cart cart)
+        {
+            try
+            {
+                _repo.AddtoCart(cart);
+                return Ok();
+            }
+            catch(Exception ex)
+            {
+                return NotFound(ex.InnerException.Message);
+            }
+        }
+        [HttpGet]
+        [Route("GetCartItems")]
+        public IActionResult GetCartItems()
+        {
+            try
+            {
+                return Ok(_repo.GetCartItems());
+            }
+            catch(Exception ex)
+            {
+                return NotFound(ex.Message);
+            }
+        }
+        [HttpDelete]
+        [Route("DeleteCartItem/{id}")]
+        public IActionResult DeleteCartItem(string id)
+        {
+            try
+            {
+                _repo.DeleteCartItem(id);
+                return Ok();
+            }
+            catch(Exception ex)
+            {
+                return NotFound(ex.Message);
+            }
+        }
     }
 }

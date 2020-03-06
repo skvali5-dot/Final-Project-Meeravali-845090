@@ -3,6 +3,7 @@ import { Buyer } from 'src/app/Models/buyer';
 import {FormGroup,FormBuilder,Validators} from '@angular/forms';
 import { combineLatest } from 'rxjs';
 import { BuyerService } from 'src/app/Services/buyer.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-view-profile',
@@ -13,7 +14,7 @@ export class ViewProfileComponent implements OnInit {
     RegisterForm:FormGroup;
     submitted=false;
     buyer:Buyer;
-  constructor(private formbuilder:FormBuilder,private service:BuyerService) { }
+  constructor(private formbuilder:FormBuilder,private service:BuyerService,private route:Router) { }
   ngOnInit() {
     this.RegisterForm=this.formbuilder.group({
       id:[''],
@@ -31,7 +32,7 @@ export class ViewProfileComponent implements OnInit {
     if(this.RegisterForm.valid)
     {
       this.buyer=new Buyer();
-      this.buyer.id=this.RegisterForm.value["id"],
+      this.buyer.id=localStorage.getItem('buyerid');
       this.buyer.username=this.RegisterForm.value["username"];
       this.buyer.password=this.RegisterForm.value["password"];
       this.buyer.emailid=this.RegisterForm.value["emailid"];
@@ -39,7 +40,7 @@ export class ViewProfileComponent implements OnInit {
       this.buyer.createddatetime=this.RegisterForm.value["createddatetime"];
       console.log(this.buyer); 
       this.service.Update(this.buyer).subscribe(res=>{
-        alert('Update was Done Successfull');
+        alert('Your Details Are Updated');
       },err=>{
         console.log(err);
       })
@@ -62,4 +63,8 @@ export class ViewProfileComponent implements OnInit {
     })
   }
   get f() { return this.RegisterForm.controls; }
+  Logout(){
+    localStorage.clear();
+    this.route.navigateByUrl('/login');
+  }
 }

@@ -36,10 +36,6 @@
                 <div class="card-body">
                     <form [formGroup]="RegisterForm6" (ngSubmit)="onSubmit()">       
                     <div class="form-group">
-                        <label style="color: whitesmoke;">ID</label>
-                        <input type="text" formControlName="id" class="form-control" readonly="readonly"/>
-                      </div>
-                    <div class="form-group">
                         <label style="color: whitesmoke;">UserName</label>
                         <input type="text" formControlName="username" class="form-control" />
                     </div>
@@ -49,7 +45,7 @@
                   </div>
                   <div class="form-group">
                     <label style="color: whitesmoke;">Company Name</label>
-                    <input type="text" formControlName="companyname" class="form-control" />
+                    <input type="text" formControlName="companyname" readonly="readonly" class="form-control" />
                 </div>
                 <div class="form-group">
                     <label style="color: whitesmoke;">GSTIN</label>
@@ -57,7 +53,7 @@
                 </div>
                 <div class="form-group">
                     <label style="color: whitesmoke;">Brief_About_Company</label>
-                    <textarea type="text" formControlName="briefaboutcompany" class="form-control"></textarea>
+                    <textarea type="text" formControlName="briefaboutcompany" readonly="readonly" class="form-control"></textarea>
                 </div>
                 <div class="form-group">
                     <label style="color: whitesmoke;">Postal Address</label>

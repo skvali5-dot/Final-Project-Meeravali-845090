@@ -48,12 +48,23 @@
         <div class="text-center">
                 <input type="text" class="mr-sm-2" aria-label="Search" [(ngModel)]="itemname">&nbsp;
                 <button class="btn btn-success" type="submit" (click)="Search(itemname)">Search</button>
+                <br/>
+                <h5 style="color: whitesmoke;">Click Here For Advanced Search...</h5>
+                <button style="width: 30%;" class="btn btn-primary text-uppercase" type="button" (click)="Show()">Advanced Search</button>  
         </div>
+        <br/>
+        <div class="text-center" [hidden]="isShow">
+          <label style="color: whitesmoke;"><h5>Search By Category:&nbsp;</h5></label> 
+          <select [(ngModel)]="category">   
+              <option *ngFor="let item of clist" value="{{item.categoryId}}">{{item.categoryName}}</option>
+            </select>&nbsp;
+            <button class="btn btn-primary" type="button" (click)="SearchByCategory(category)">Search</button>
+        </div>
+        <br/>
           <div class="container">
           <div class="row">
-          <div class="card-deck" *ngFor="let item of list">
-            <div class="card bg-dark" style="width: 18rem;">
-              <img class="card-img-top" src="/assets/Images/{{item.imagename}}" style="height:150px; width:150px;" alt="Card image cap">
+            <div class="card bg-dark" *ngFor="let item of list" style="width:250px;">
+              <img class="card-img-top" src="/assets/Images/{{item.imagename}}" alt="Card image cap">
               <h5 class="card-title" style="color: whitesmoke;">{{item.itemName}}</h5>
               <div class="card-body" style="color: whitesmoke;">
                 ItemId:{{item.id}}<br/>
@@ -66,10 +77,9 @@
                   <br/>
                    <br/>
                   <button type="button" class="btn btn-primary" (click)="Buy(item)">Buy Now</button>&nbsp;
-                  <button type="button" class="btn btn-primary">AddToCart</button> 
+                  <button type="button" class="btn btn-primary" (click)="AddtoCart(item)">AddToCart</button> 
                 </div>
                 </div>
-            </div>
           </div>
         </div>
     </main>

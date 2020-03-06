@@ -3,6 +3,8 @@ import { Buyer } from 'src/app/Models/buyer';
 import {FormGroup,FormBuilder,Validators} from '@angular/forms';
 import { AccountService } from 'src/app/Services/account.service';
 import { combineLatest } from 'rxjs';
+import { Route } from '@angular/compiler/src/core';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-register-buyer',
   templateUrl: './register-buyer.component.html',
@@ -14,7 +16,7 @@ export class RegisterBuyerComponent implements OnInit {
   submitted=false;
   lists:Buyer[];
   buyer:Buyer;
-  constructor(private formbuilder:FormBuilder,private service:AccountService) { 
+  constructor(private formbuilder:FormBuilder,private service:AccountService,private route:Router) { 
   }
 
   ngOnInit() {

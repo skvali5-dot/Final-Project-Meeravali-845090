@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder ,Validators} from '@angular/forms';
 import {Seller} from 'src/app/Models/seller';
 import { combineLatest } from 'rxjs';
 import { SellerService } from 'src/app/Services/seller.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-seller-profile',
@@ -15,7 +16,7 @@ export class SellerProfileComponent implements OnInit {
   submitted=false;
   lists:Seller[];
   seller:Seller;
-  constructor(private formbuilder:FormBuilder,private service:SellerService) {  
+  constructor(private formbuilder:FormBuilder,private service:SellerService,private route:Router) {  
   }
 
   ngOnInit() {
@@ -61,7 +62,7 @@ Search()
   Update()
   {
     this.seller=new Seller();
-      this.seller.id=this.RegisterForm6.value["id"];
+      this.seller.id=localStorage.getItem('sellerid');
       this.seller.username=this.RegisterForm6.value["username"];
       this.seller.password=this.RegisterForm6.value["password"];
       this.seller.companyname=this.RegisterForm6.value["companyname"];
@@ -74,9 +75,14 @@ Search()
       console.log(this.seller);
       this.service.Update(this.seller).subscribe(res=>{
          console.log('Record Updated');
+         alert('Your Details Are Updated')
       },err=>{
         console.log(err);
       })
+  }
+  Logout(){
+    localStorage.clear();
+    this.route.navigateByUrl('login');
   }
 }
 

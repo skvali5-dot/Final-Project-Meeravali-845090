@@ -48,6 +48,7 @@ export class AddCategoryComponent implements OnInit {
   this.RegisterForm2.reset();
   }
 Logout(){
+  localStorage.clear();
   this.route.navigateByUrl('/login');
 }
 }

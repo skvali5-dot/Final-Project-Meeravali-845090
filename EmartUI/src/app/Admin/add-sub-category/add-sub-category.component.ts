@@ -4,6 +4,7 @@ import {SubCategory} from 'src/app/Models/sub-category';
 import { combineLatest } from 'rxjs';
 import { AdminService } from 'src/app/Services/admin.service';
 import { Category } from 'src/app/Models/category';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-sub-category',
@@ -16,7 +17,7 @@ export class AddSubCategoryComponent implements OnInit {
   submitted=false;
   subcategory:SubCategory;
   categorylist:Category[];
-  constructor(private formBuilder:FormBuilder,private service:AdminService) { 
+  constructor(private formBuilder:FormBuilder,private service:AdminService,private route:Router) { 
     this.service.GetAllCategories().subscribe(res=>{
       this.categorylist=res;
       console.log(this.categorylist);
@@ -54,5 +55,9 @@ export class AddSubCategoryComponent implements OnInit {
   onReset(){
     this.submitted=false;
   this.RegisterForm3.reset();
+  }
+  Logout(){
+    localStorage.clear();
+    this.route.navigateByUrl('/login');
   }
 }
