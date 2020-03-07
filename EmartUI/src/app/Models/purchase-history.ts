@@ -5,6 +5,6 @@ export class PurchaseHistory {
     transactiontype:string;
     itemid:string;
     numberofitems:string;
-    datetime:string;
+    datetime:Date;
     remarks:string;    
 }

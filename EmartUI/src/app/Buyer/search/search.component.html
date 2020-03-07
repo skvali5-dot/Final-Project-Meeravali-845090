@@ -13,25 +13,21 @@
           <a class="nav-link" [routerLink]="'/view-profile'">View Profile</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" [routerLink]="'/view-cart'">View Cart</a>
-        </li>
-        <li class="nav-item">
           <a class="nav-link" [routerLink]="'/purchase-history'">Purchase History</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" [routerLink]="'/buy-product'">Buy</a>
+          <a class="nav-link" [routerLink]="'/view-cart'">View Cart</a>
         </li>
-        <!-- Dropdown -->
-        <!--<li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-            Dropdown link
+        <!-- <li class="nav-item">
+          <a class="nav-link" [routerLink]="'/view-cart'">
+            <span class="glyphicon glyphicon-shopping-cart" style="height:22px;width: 30px;" aria-hidden="true">
+              <label style="vertical-align: top;color:whitesmoke;" >{{count}}</label>
+            </span>
           </a>
-          <div class="dropdown-menu">
-            <a class="dropdown-item" href="#">Link 1</a>
-            <a class="dropdown-item" href="#">Link 2</a>
-            <a class="dropdown-item" href="#">Link 3</a>
-          </div>
-        </li>-->
+        </li> -->
+        <!-- <li class="nav-item">
+          <a class="nav-link" [routerLink]="'/buy-product'">Buy</a>
+        </li> -->
         </ul>
         <!-- <form class="form-inline my-2 my-lg-0">
           <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
@@ -61,6 +57,37 @@
             <button class="btn btn-primary" type="button" (click)="SearchByCategory(category)">Search</button>
         </div>
         <br/>
+
+        
+        <div class="container">
+          <div class="row">
+            <div class="col-md-3" *ngFor="let item of list">
+                <div class="card bg-dark" style="width:250px;height: 500px;" >
+                  <h5 class="card-title" style="color: whitesmoke;">{{item.itemName}}</h5>
+                   <img class="card-img mx-5" id="i1" src="/assets/Images/{{item.imagename}}" style="width: 150px;height:150px;" alt="Card image cap"> 
+                    <div class="card-body" style="color: whitesmoke;">
+                      ItemId:{{item.id}}<br/>
+                      CategoryId:{{item.categoryId}}<br/>
+                      SubCategoryId:{{item.subcategoryId}}<br/>
+                       SellerId: {{item.sellerid}}<br/>
+                       Price: {{item.price}}<br/>
+                        Description:{{item.description}}<br/>
+                        Stock Number:{{item.stockNumber}}<br/>
+                        Remarks:{{item.remarks}}     
+                  </div>
+                  <div class="card-footer">
+                    <div class="text-center">
+                      <button class="btn btn-primary mr-1" (click)="Buy(item)" >Buy Now</button>
+                      <button class="btn btn-outline-info" (click)="AddtoCart(item)" >AddToCart</button>
+                  </div>     
+                  </div>  
+                </div>
+                <br>
+              </div>
+            </div>
+          </div>
+
+<!-- 
           <div class="container">
           <div class="row">
             <div class="card bg-dark" *ngFor="let item of list" style="width:250px;">
@@ -81,7 +108,7 @@
                 </div>
                 </div>
           </div>
-        </div>
+        </div> -->
     </main>
     <router-outlet></router-outlet>
   </body>

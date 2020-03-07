@@ -55,7 +55,9 @@ export class SearchComponent implements OnInit {
   }
   AddtoCart(item2:Items){
     console.log(item2);
+    let bid=localStorage.getItem('buyerid');
    this.cart=new Cart();
+   this.cart.cartid='CID'+Math.round(Math.random()*1000);
    this.cart.id=item2.id;
    this.cart.itemname=item2.itemName;
    this.cart.categoryid=item2.categoryId;
@@ -65,7 +67,8 @@ export class SearchComponent implements OnInit {
    this.cart.price=item2.price;
    this.cart.description=item2.description;
    this.cart.remarks=item2.remarks;
-   this.cart.imagename=item2.imagename
+   this.cart.imagename=item2.imagename;
+   this.cart.buyerid=bid;
    console.log(this.cart);
    this.service.AddtoCart(this.cart).subscribe(res=>{
      console.log("Record added To Cart");

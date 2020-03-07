@@ -13,86 +13,38 @@
           <a class="nav-link" [routerLink]="'/view-profile'">View Profile</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" [routerLink]="'/view-cart'">View Cart</a>
-        </li>
-        <li class="nav-item">
           <a class="nav-link" [routerLink]="'/purchase-history'">Purchase History</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" [routerLink]="'/buy-product'">Buy</a>
-        </li>
-        <li class="nav-item">
+          <li class="nav-item">
           <a class="nav-link" [routerLink]="'/search'">Search</a>
+          </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="'/view-cart'">View Cart</a>
         </li>
-        <!-- Dropdown -->
-        <!--<li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-            Dropdown link
+        <!-- <li class="nav-item">
+          <a class="nav-link" [routerLink]="'/buy-product'">Buy</a>
+        </li> -->
+        <!-- <li class="nav-item">
+          <a class="nav-link" [routerLink]="'/search'">Search</a>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="'/view-cart'">
+            <span class="glyphicon glyphicon-shopping-cart" style="height:22px;width: 30px;" aria-hidden="true">
+              <label style="vertical-align: top;color:whitesmoke;" >{{count}}</label>
+            </span>
           </a>
-          <div class="dropdown-menu">
-            <a class="dropdown-item" href="#">Link 1</a>
-            <a class="dropdown-item" href="#">Link 2</a>
-            <a class="dropdown-item" href="#">Link 3</a>
-          </div>
-        </li>-->
+        </li> -->
         </ul>
         <div class="topnav-right"> 
              <button class="btn btn-danger" (click)="Logout()">SignOut</button>
         </div>
     </nav>
     </header>
-    <main class="bg">
-          <!-- <div class="container">
-               <br/> 
-              <table class="table table-bordered">
-                <tr style="color: whitesmoke;">
-                  <th>ItemId</th>
-                  <th>Category ID</th>
-                  <th>SubCategory ID</th>
-                  <th>Seller ID</th>
-                  <th>Item Name</th>
-                  <th>Price</th>
-                  <th>Description</th>
-                  <th>Stock</th>
-                  <th>Remarks</th>
-                </tr>
-                <tr *ngFor="let item of list" style="color: whitesmoke;">
-                  <td>{{item.id}}</td>
-                  <td>{{item.categoryId}}</td>
-                  <td>{{item.subcategoryId}}</td>
-                  <td>{{item.sellerid}}</td>
-                  <td>{{item.itemName}}</td>
-                  <td>{{item.price}}</td>
-                  <td>{{item.description}}</td>
-                  <td>{{item.stockNumber}}</td>
-                  <td>{{item.remarks}}</td>       
-                </tr>
-              </table>
-          </div> -->
-          
-         
-          <br/>
-          <!-- <div class="container">
-           <div class="row">
-            <div class="card col-3 bg-dark" *ngFor="let item of list" style="width: 250px;">
-              <img class="card-img-top" src="/assets/Images/{{item.imagename}}" alt="Card image cap"><br/>
-              <h5 class="card-title" style="color: whitesmoke;">{{item.itemName}}</h5>
-              <div class="card-body" style="color: whitesmoke;">
-                ItemId:{{item.id}}<br/>
-                CategoryId:{{item.categoryId}}<br/>
-                SubCategoryId:{{item.subcategoryId}}<br/>
-                 SellerId: {{item.sellerid}}<br/>
-                 Price: {{item.price}}<br/>
-                  Description:{{item.description}}<br/>
-                  Stock Number:{{item.stockNumber}}<br/>
-                  Remarks:{{item.remarks}}     
-              </div>
-            </div>
-            &nbsp;
-          </div>
-          </div>
- -->
-
+    <main class="bg"> 
+      <br/>
+      <div class="offset-10">
+        <h5 style="color: whitesmoke;">Welcome....{{this.user}}</h5>
+      </div>
+        <br/>
           <div class="container">
             <div class="row">
               <div class="col-md-3" *ngFor="let item of list">
@@ -109,14 +61,14 @@
                           Stock Number:{{item.stockNumber}}<br/>
                           Remarks:{{item.remarks}}     
                     </div>
-                 
+<!--                  
                     <div class="card-footer">
                       <div class="text-center">
                         <button class="btn btn-primary mr-1" >Buy Now</button>
                         <button class="btn btn-outline-info" >AddToCart</button>
                     </div>
                     
-                    </div>
+                    </div> -->
                     
                   </div>
                   <br>

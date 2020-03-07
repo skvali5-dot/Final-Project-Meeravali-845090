@@ -1,1 +1,62 @@
-<p>purchase-history works!</p>
+<html>
+  <head>
+  </head>
+  <body>
+    <header>
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+      <!-- Brand -->
+      <a class="navbar-brand" [routerLink]="'/buyer-landing-page'">Emart</a>
+    
+      <!-- Links -->
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="'/view-profile'">View Profile</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="'/search'">Search</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="'/view-cart'">View Cart</a>
+        </li>
+        <!-- <li class="nav-item">
+          <a class="nav-link" [routerLink]="'/buy-product'">Buy</a>
+        </li> -->
+        <!-- <li class="nav-item">
+            <a class="nav-link" [routerLink]="'/view-cart'">
+              <span class="glyphicon glyphicon-shopping-cart" style="height:22px;width: 30px;" aria-hidden="true">
+                <label style="vertical-align: top;color:whitesmoke;" >{{count}}</label>
+              </span>
+            </a>
+          </li> -->
+        </ul>
+        <div class="topnav-right"> 
+             <button class="btn btn-danger" (click)="Logout()">SignOut</button>
+        </div>
+    </nav>
+    </header>
+    <main class="bg">
+           <div class="container">
+               <br/> 
+              <table class="table table-bordered">
+                <tr style="color: whitesmoke;">
+                  <th>ItemId</th>
+                  <th>Number Of Items</th>
+                  <th>Seller ID</th>
+                  <th>Transaction Type</th>
+                  <th>Ordered Date</th>
+                  <th>Transaction ID</th>
+                </tr>
+                <tr *ngFor="let item of phlist" style="color: whitesmoke;">
+                  <td>{{item.itemId}}</td>
+                  <td>{{item.numberOfItems}}</td>
+                  <td>{{item.sellerId}}</td>
+                  <td>{{item.transactionType}}</td>
+                  <td>{{item.dateTime}}</td>   
+                  <td>{{item.id}}</td>
+                </tr>
+              </table>
+          </div>    
+    </main>
+    <router-outlet></router-outlet>
+  </body>
+</html>

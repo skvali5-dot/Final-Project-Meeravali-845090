@@ -10,10 +10,19 @@ import { Router } from '@angular/router';
 })
 export class BuyerLandingPageComponent implements OnInit {
   list:Items[];
+  count:number;
+  user:string;
   constructor(private service:BuyerService,private route:Router) {
       this.service.GetAllItems().subscribe(res=>{
         this.list=res;
         console.log(this.list);
+        this.user=localStorage.getItem('username');
+        console.log(this.user);
+      })
+      let bid=localStorage.getItem('buyerid');
+      this.service.GetCount(bid).subscribe(res=>{
+        this.count=res;
+        console.log(this.count);
       })
    }
   ngOnInit() {

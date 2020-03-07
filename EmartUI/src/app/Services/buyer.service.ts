@@ -4,6 +4,7 @@ import {Observable} from 'rxjs';
 import { Buyer } from '../Models/buyer';
 import { PurchaseHistory } from '../Models/purchase-history';
 import { Cart } from '../Models/cart';
+import { BuyerLandingPageComponent } from '../Buyer/buyer-landing-page/buyer-landing-page.component';
 const Requestheaders={headers:new HttpHeaders({
   'Content-type':'application/json',
   'Authorization':'Bearer'+localStorage.getItem('token')
@@ -45,12 +46,18 @@ export class BuyerService {
   public AddtoCart(cart:Cart):Observable<any>{
     return this.http.post<any>(this.url+'Buyer/AddtoCart',cart,Requestheaders);
   }
-  public GetCartItems():Observable<any>
+  public GetCartItems(bid:string):Observable<any>
   {
-    return this.http.get<any>(this.url+'Buyer/GetCartItems',Requestheaders);
+    return this.http.get<any>(this.url+'Buyer/GetCartItems/'+bid,Requestheaders);
   }
   public RemoveCartItem(itemid:string):Observable<any>
   {
     return this.http.delete<any>(this.url+'Buyer/DeleteCartItem/'+itemid,Requestheaders);
+  }
+  public GetPurchaseHistory(buyerid:string):Observable<any>{
+    return this.http.get<any>(this.url+'Buyer/PurchaseHistory/'+buyerid,Requestheaders);
+  }
+  public GetCount(buyerid:string):Observable<any>{
+    return this.http.get<any>(this.url+'Buyer/GetCount/'+buyerid,Requestheaders);
   }
 }

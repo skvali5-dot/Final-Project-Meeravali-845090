@@ -25,7 +25,6 @@ export class RegisterBuyerComponent implements OnInit {
       password:['',[Validators.required,Validators.pattern('^[a-zA-Z0-9~`!@#$%^&*()-+=]{6,15}$')]],
       emailid:['',[Validators.required,Validators.email]],
       mobile:['',[Validators.required,Validators.pattern('^[6-9][0-9]{9}$')]],
-      createddatetime:['']
     });
   }
   
@@ -40,7 +39,7 @@ export class RegisterBuyerComponent implements OnInit {
       this.buyer.password=this.RegisterForm.value["password"];
       this.buyer.emailid=this.RegisterForm.value["emailid"];
       this.buyer.mobilenumber=this.RegisterForm.value["mobile"];
-      this.buyer.createddatetime=this.RegisterForm.value["createddatetime"];
+      this.buyer.createddatetime=new Date();
       console.log(this.buyer); 
       alert('Registration Successfull');
       this.service.BuyerSignup(this.buyer).subscribe(res=>{

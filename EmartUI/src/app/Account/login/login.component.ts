@@ -50,7 +50,8 @@ export class LoginComponent implements OnInit {
             this.token=res;
             if(this.token.message=='success'){
               localStorage.setItem('buyerid',this.token.buyerid);
-              
+              console.log(this.token.uname);
+              localStorage.setItem('username',this.token.uname);
               this.route.navigateByUrl('/buyer-landing-page');
                
             }
@@ -65,7 +66,7 @@ export class LoginComponent implements OnInit {
             this.token=res;
             if(this.token.message=='success'){
               localStorage.setItem('sellerid',this.token.sellerid);
-              localStorage.setItem('username',this.token.username);
+              localStorage.setItem('username',this.token.uname);
             this.route.navigateByUrl('/seller-landing-page');
           }
           else{

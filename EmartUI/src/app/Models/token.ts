@@ -2,6 +2,6 @@ export class Token {
     token:string;
     sellerid:string;
     buyerid:string;
-    username:string;
+    uname:string;
     message:string;
 }

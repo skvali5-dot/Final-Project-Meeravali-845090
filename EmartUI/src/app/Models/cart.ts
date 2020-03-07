@@ -1,4 +1,5 @@
 export class Cart {
+    cartid:string;
     id:string;
     categoryid:string;
     subcategoryid:string;
@@ -9,4 +10,5 @@ export class Cart {
     stocknumber:string;
     remarks:string;
     imagename:string;
+    buyerid:string;
 }

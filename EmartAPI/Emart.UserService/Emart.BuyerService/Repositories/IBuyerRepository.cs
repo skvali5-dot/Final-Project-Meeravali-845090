@@ -18,7 +18,8 @@ namespace Emart.BuyerService
         List<SubCategory> GetSubCategories(string cid);
         List<Items> GetAllItems();
         void AddtoCart(Cart cart);
-        List<Cart> GetCartItems();
-        void DeleteCartItem(string itemid);
+        List<Cart> GetCartItems(string bid);
+        void DeleteCartItem(string cartid);
+        int GetCount(string bid);
     }
 }

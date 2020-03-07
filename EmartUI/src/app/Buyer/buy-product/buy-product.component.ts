@@ -20,42 +20,47 @@ export class BuyProductComponent implements OnInit {
   item:Items;
   cart:Cart;
   obj:PurchaseHistory;
+  submitted=false;
   ngOnInit() {
     this.RegisterForm=this.formBuilder.group({
-      transactiontype:[''],
-      cardnumber:[''],
-      cvv:[''],
-      ed:[''],
-      name:[''],
-      date:[''],
-      numberofitems:[''],
-      remarks:['']
+      transactiontype:['',Validators.required],
+      cardnumber:['',Validators.required],
+      cvv:['',Validators.required],
+      ed:['',Validators.required],
+      name:['',Validators.required],
+      numberofitems:['',Validators.required],
+      remarks:['',Validators.required]
     })
-     this.item=JSON.parse(localStorage.getItem('item1'));
-     console.log(this.item);
-     console.log(this.item.id);
+     this.cart=JSON.parse(localStorage.getItem('item1'));
+     console.log(this.cart);
+     console.log(this.cart.id);
   }
   onSubmit()
   {
-     this.obj=new PurchaseHistory();
-     this.obj.id='TID'+Math.round(Math.random()*1000);
-     this.obj.buyerid=localStorage.getItem('buyerid');
-     this.obj.sellerid=this.item.sellerid;
-     this.obj.numberofitems=this.RegisterForm.value["numberofitems"];
-     this.obj.itemid=this.item.id;
-     this.obj.transactiontype=this.RegisterForm.value["transactiontype"]
-     this.obj.datetime=this.RegisterForm.value["date"];
-     this.obj.remarks=this.RegisterForm.value["remarks"];
-     console.log(this.obj);
-     this.service.BuyItem(this.obj).subscribe(res=>{
+      this.submitted=true;
+      if(this.RegisterForm.valid){
+      this.obj=new PurchaseHistory();
+      this.obj.id='TID'+Math.round(Math.random()*1000);
+      this.obj.buyerid=localStorage.getItem('buyerid');
+      this.obj.sellerid=this.cart.sellerid;
+      this.obj.numberofitems=this.RegisterForm.value["numberofitems"];
+      this.obj.itemid=this.cart.id;
+      this.obj.transactiontype=this.RegisterForm.value["transactiontype"]
+      this.obj.datetime=new Date();
+      this.obj.remarks=this.RegisterForm.value["remarks"];
+      console.log(this.obj);
+      this.service.BuyItem(this.obj).subscribe(res=>{
        console.log("Purchase was Sucessfull");
        alert('Purchase Done Successfully');
        this.Delete();
-     })
+      },err=>{
+         alert('Please add Details');
+      })
+    }
     }
     Delete(){
-      console.log(this.item.id);
-      let id=this.item.id
+      console.log(this.cart.cartid);
+      let id=this.cart.cartid
       this.service.RemoveCartItem(id).subscribe(res=>{
         console.log('Cart item Removed');
       })
@@ -64,4 +69,6 @@ Logout(){
   localStorage.clear();
   this.route.navigateByUrl('/login');
 }
+get f() { return this.RegisterForm.controls; }
 }
+

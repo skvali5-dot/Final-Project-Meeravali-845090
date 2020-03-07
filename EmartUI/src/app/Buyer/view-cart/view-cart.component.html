@@ -15,9 +15,9 @@
         <li class="nav-item">
           <a class="nav-link" [routerLink]="'/purchase-history'">Purchase History</a>
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a class="nav-link" [routerLink]="'/buy-product'">Buy</a>
-        </li>
+        </li> -->
         <li class="nav-item">
             <a class="nav-link" [routerLink]="'/search'">Search</a>
           </li>
@@ -50,7 +50,7 @@
                     <div class="card-footer">
                       <div class="text-center">
                         <button class="btn btn-primary mr-1" (click)="BuyNow(item)" >Buy Now</button>
-                        <button class="btn btn-danger mr-1" (click)="Remove(item.id)">Remove</button>
+                        <button class="btn btn-danger mr-1" (click)="Remove(item.cartid)">Remove</button>
                     </div>
                     </div>     
                   </div>

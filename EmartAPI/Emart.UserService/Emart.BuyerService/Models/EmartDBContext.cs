@@ -28,7 +28,7 @@ namespace Emart.BuyerService.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
+//#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
                 optionsBuilder.UseSqlServer("Data Source=DESKTOP-HPSFJH3\\SQLEXPRESS;Initial Catalog=EmartDB;User ID=sa;Password=pass@word1");
             }
         }
@@ -81,14 +81,22 @@ namespace Emart.BuyerService.Models
 
             modelBuilder.Entity<Cart>(entity =>
             {
-                entity.Property(e => e.Id)
-                    .HasColumnName("id")
+                entity.HasKey(e => e.Cartid)
+                    .HasName("PK__Cart__41663FC0B7FCBF54");
+
+                entity.Property(e => e.Cartid)
+                    .HasColumnName("cartid")
                     .HasMaxLength(30)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Buyerid)
+                    .HasColumnName("buyerid")
+                    .HasMaxLength(20)
                     .IsUnicode(false);
 
                 entity.Property(e => e.Categoryid)
                     .HasColumnName("categoryid")
-                    .HasMaxLength(30)
+                    .HasMaxLength(20)
                     .IsUnicode(false);
 
                 entity.Property(e => e.Description)
@@ -96,9 +104,14 @@ namespace Emart.BuyerService.Models
                     .HasMaxLength(250)
                     .IsUnicode(false);
 
+                entity.Property(e => e.Id)
+                    .HasColumnName("id")
+                    .HasMaxLength(20)
+                    .IsUnicode(false);
+
                 entity.Property(e => e.Imagename)
                     .HasColumnName("imagename")
-                    .HasMaxLength(30)
+                    .HasMaxLength(50)
                     .IsUnicode(false);
 
                 entity.Property(e => e.Itemname)
@@ -113,23 +126,48 @@ namespace Emart.BuyerService.Models
 
                 entity.Property(e => e.Remarks)
                     .HasColumnName("remarks")
-                    .HasMaxLength(250)
+                    .HasMaxLength(30)
                     .IsUnicode(false);
 
                 entity.Property(e => e.Sellerid)
                     .HasColumnName("sellerid")
-                    .HasMaxLength(30)
+                    .HasMaxLength(20)
                     .IsUnicode(false);
 
                 entity.Property(e => e.Stocknumber)
                     .HasColumnName("stocknumber")
-                    .HasMaxLength(30)
+                    .HasMaxLength(20)
                     .IsUnicode(false);
 
                 entity.Property(e => e.Subcategoryid)
                     .HasColumnName("subcategoryid")
-                    .HasMaxLength(30)
+                    .HasMaxLength(20)
                     .IsUnicode(false);
+
+                entity.HasOne(d => d.Buyer)
+                    .WithMany(p => p.Cart)
+                    .HasForeignKey(d => d.Buyerid)
+                    .HasConstraintName("FK__Cart__buyerid__19DFD96B");
+
+                entity.HasOne(d => d.Category)
+                    .WithMany(p => p.Cart)
+                    .HasForeignKey(d => d.Categoryid)
+                    .HasConstraintName("FK__Cart__categoryid__17036CC0");
+
+                entity.HasOne(d => d.IdNavigation)
+                    .WithMany(p => p.Cart)
+                    .HasForeignKey(d => d.Id)
+                    .HasConstraintName("FK__Cart__id__160F4887");
+
+                entity.HasOne(d => d.Seller)
+                    .WithMany(p => p.Cart)
+                    .HasForeignKey(d => d.Sellerid)
+                    .HasConstraintName("FK__Cart__sellerid__18EBB532");
+
+                entity.HasOne(d => d.Subcategory)
+                    .WithMany(p => p.Cart)
+                    .HasForeignKey(d => d.Subcategoryid)
+                    .HasConstraintName("FK__Cart__subcategor__17F790F9");
             });
 
             modelBuilder.Entity<Category>(entity =>

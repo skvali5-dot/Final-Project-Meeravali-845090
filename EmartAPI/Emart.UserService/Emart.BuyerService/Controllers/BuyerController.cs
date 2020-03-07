@@ -165,25 +165,38 @@ namespace Emart.BuyerService.Controllers
             }
         }
         [HttpGet]
-        [Route("GetCartItems")]
-        public IActionResult GetCartItems()
+        [Route("GetCartItems/{buyerid}")]
+        public IActionResult GetCartItems(string buyerid)
         {
             try
             {
-                return Ok(_repo.GetCartItems());
+                return Ok(_repo.GetCartItems(buyerid));
             }
             catch(Exception ex)
             {
                 return NotFound(ex.Message);
             }
         }
-        [HttpDelete]
-        [Route("DeleteCartItem/{id}")]
-        public IActionResult DeleteCartItem(string id)
+        [HttpGet]
+        [Route("GetCount/{buyerid}")]
+        public IActionResult GetCount(string buyerid)
         {
             try
             {
-                _repo.DeleteCartItem(id);
+                return Ok(_repo.GetCount(buyerid));
+            }
+            catch (Exception ex)
+            {
+                return NotFound(ex.Message);
+            }
+        }
+        [HttpDelete]
+        [Route("DeleteCartItem/{cartid}")]
+        public IActionResult DeleteCartItem(string cartid)
+        {
+            try
+            {
+                _repo.DeleteCartItem(cartid);
                 return Ok();
             }
             catch(Exception ex)
