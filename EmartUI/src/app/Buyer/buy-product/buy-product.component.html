@@ -62,7 +62,6 @@
                                     <select formControlName="transactiontype" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.transactiontype.errors }" required>
                                         <option value="credit">Credit Card</option>
                                         <option value="debit">Debit Card</option>
-                                        <option value="cod">Cash On Delivery</option>
                                     </select>
                                     <div *ngIf="submitted && f.transactiontype.errors" class="invalid-feedback">
                                       <div *ngIf="f.transactiontype.errors.required">Please Choose Payment Mode</div>

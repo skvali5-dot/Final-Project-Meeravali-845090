@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Emart.AdminService.Models;
 using Emart.AdminService.Repositories;
+
 namespace Emart.AdminService.Controllers
 {
     [Route("api/[controller]")]
@@ -89,7 +90,7 @@ namespace Emart.AdminService.Controllers
             }
         }
         [HttpGet]
-        [Route("GetCategory/{categoryId")]
+        [Route("GetCategory/{categoryId}")]
         public IActionResult GetCategory(string categoryId)
         {
             try
@@ -102,7 +103,7 @@ namespace Emart.AdminService.Controllers
             }
         }
         [HttpGet]
-        [Route("GetSubCategory/{subcategoryId")]
+        [Route("GetSubCategory/{subcategoryId}")]
         public IActionResult GetSubCategory(string subcategoryId)
         {
             try

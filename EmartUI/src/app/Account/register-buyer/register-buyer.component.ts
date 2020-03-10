@@ -41,10 +41,11 @@ export class RegisterBuyerComponent implements OnInit {
       this.buyer.mobilenumber=this.RegisterForm.value["mobile"];
       this.buyer.createddatetime=new Date();
       console.log(this.buyer); 
-      alert('Registration Successfull');
       this.service.BuyerSignup(this.buyer).subscribe(res=>{
         this.buyer=res;
         console.log(this.buyer);
+        alert('SignUp Successfull');
+        this.route.navigateByUrl('/login');
       },err=>{
         console.log(err);
       })

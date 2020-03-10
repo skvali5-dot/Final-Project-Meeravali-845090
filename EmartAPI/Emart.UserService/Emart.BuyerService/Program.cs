@@ -21,6 +21,6 @@ namespace Emart.BuyerService
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
-                });
+               });
     }
 }

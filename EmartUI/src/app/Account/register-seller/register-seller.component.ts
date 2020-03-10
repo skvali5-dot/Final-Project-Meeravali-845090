@@ -63,10 +63,11 @@ export class RegisterSellerComponent implements OnInit {
       this.seller.emailid=this.RegisterForm1.value["emailid"];
       this.seller.contactnumber=this.RegisterForm1.value["contactnumber"];   
       console.log(this.seller);
-      alert('Registration Successfull');
       this.service.SellerSignUp(this.seller).subscribe(res=>{
          this.seller=res;
          console.log(this.seller);
+         alert('SignUp Successfull');
+         this.route.navigateByUrl('/login');
       },err=>{
         console.log(err);
       })
