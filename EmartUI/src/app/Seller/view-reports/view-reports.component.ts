@@ -12,11 +12,18 @@ import { Router } from '@angular/router';
 export class ViewReportsComponent implements OnInit {
   plist:PurchaseHistory[];
   constructor(private service:SellerService,private route:Router) {
-   let sid=localStorage.getItem('sellerid');
+   if(localStorage.getItem('sellerid')){
+
+    let sid=localStorage.getItem('sellerid');
     this.service.GetReports(sid).subscribe(res=>{
       this.plist=res;
       console.log(this.plist);
     })
+  }
+  else{
+    alert('please login With your Credentials');
+    this.route.navigateByUrl('/login');
+  }
    }
   ngOnInit() {
   }

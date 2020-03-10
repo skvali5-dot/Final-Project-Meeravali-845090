@@ -204,5 +204,32 @@ namespace Emart.BuyerService.Controllers
                 return NotFound(ex.Message);
             }
         }
+        [HttpGet]
+        [Route("CheckCartItem/{id}/{buyerid}")]
+        public IActionResult CheckCartItem(string id,string buyerid)
+        {
+            try
+            {
+                return Ok(_repo.CheckCartItem(id,buyerid));
+            }
+            catch(Exception ex)
+            {
+                return NotFound(ex.Message);
+            }
+        }
+        [HttpGet]
+        [Route("GetPurchaseHistory{id}")]
+        public IActionResult GetPurchaseHostory(string id)
+        {
+            try
+            {
+                return Ok(_repo.GetPurchaseHistory(id));
+            }
+            catch (Exception ex)
+            {
+                return NotFound(ex.Message);
+            }
+        }
+
     }
 }

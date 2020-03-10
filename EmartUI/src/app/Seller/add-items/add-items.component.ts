@@ -24,10 +24,16 @@ export class AddItemsComponent implements OnInit {
   imagename:string;
   selectedFile : File = null;
   constructor(private formBuilder:FormBuilder,private service:SellerService,private route:Router) { 
+    if(localStorage.getItem('sellerid')){
     this.service.GetCategories().subscribe(res=>{
       this.clist=res;
       console.log(this.clist);
     })
+  }
+  else{
+    alert('please login With your Credentials');
+    this.route.navigateByUrl('/login');
+  }
   }
   ngOnInit() {
     this.RegisterForm4=this.formBuilder.group({

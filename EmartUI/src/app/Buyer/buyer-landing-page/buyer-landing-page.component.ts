@@ -13,7 +13,10 @@ export class BuyerLandingPageComponent implements OnInit {
   count:number;
   user:string;
   constructor(private service:BuyerService,private route:Router) {
-      this.service.GetAllItems().subscribe(res=>{
+      
+    if(localStorage.getItem('buyerid'))
+    {
+       this.service.GetAllItems().subscribe(res=>{
         this.list=res;
         console.log(this.list);
         this.user=localStorage.getItem('username');
@@ -24,6 +27,11 @@ export class BuyerLandingPageComponent implements OnInit {
         this.count=res;
         console.log(this.count);
       })
+    }
+    else{
+      alert('Please Login With your Credentials');
+      this.route.navigateByUrl('/login');
+    }
    }
   ngOnInit() {
   }

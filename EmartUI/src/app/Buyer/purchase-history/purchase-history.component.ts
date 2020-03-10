@@ -11,12 +11,24 @@ import { Router } from '@angular/router';
 })
 export class PurchaseHistoryComponent implements OnInit {
   phlist:PurchaseHistory[];
+  count:number;
   constructor(private service:BuyerService,private route:Router) { 
+   if(localStorage.getItem('buyerid')){
+
     let bid=localStorage.getItem('buyerid');
     this.service.GetPurchaseHistory(bid).subscribe(res=>{
       this.phlist=res;
       console.log(this.phlist);
     })
+    this.service.GetCount(bid).subscribe(res=>{
+      this.count=res;
+      console.log(this.count);
+    })
+  }
+  else{
+    alert('please login With your Credentials');
+    this.route.navigateByUrl('/login');
+  }
   }
   ngOnInit() {
   }

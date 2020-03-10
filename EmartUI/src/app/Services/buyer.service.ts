@@ -60,4 +60,7 @@ export class BuyerService {
   public GetCount(buyerid:string):Observable<any>{
     return this.http.get<any>(this.url+'Buyer/GetCount/'+buyerid,Requestheaders);
   }
+  public CheckCartItem(itemid:string,buyerid:string):Observable<any>{
+    return this.http.get<any>(this.url+'Buyer/CheckCartItem/'+itemid+'/'+buyerid,Requestheaders);
+  }
 }

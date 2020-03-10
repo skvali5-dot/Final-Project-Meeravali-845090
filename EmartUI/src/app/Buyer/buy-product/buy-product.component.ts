@@ -16,11 +16,24 @@ import { Cart } from 'src/app/Models/cart';
 })
 export class BuyProductComponent implements OnInit {
   RegisterForm:FormGroup;
-  constructor(private service:BuyerService,private formBuilder:FormBuilder,private route:Router) { }
   item:Items;
   cart:Cart;
   obj:PurchaseHistory;
   submitted=false;
+  check:boolean;
+  count:number;
+  constructor(private service:BuyerService,private formBuilder:FormBuilder,private route:Router) { 
+    if(localStorage.getItem('buyerid')){
+      let bid=localStorage.getItem('buyerid');
+      this.service.GetCount(bid).subscribe(res=>{
+        this.count=res;
+      })
+    }
+    else{
+      alert('please login With your Credentials');
+      this.route.navigateByUrl('/login');
+    }
+  }
   ngOnInit() {
     this.RegisterForm=this.formBuilder.group({
       transactiontype:['',Validators.required],
@@ -52,11 +65,22 @@ export class BuyProductComponent implements OnInit {
       this.service.BuyItem(this.obj).subscribe(res=>{
        console.log("Purchase was Sucessfull");
        alert('Purchase Done Successfully');
-       this.Delete();
+       this.CheckItem();
       },err=>{
          alert('Please add Details');
       })
     }
+    }
+    CheckItem(){
+      let itemid=this.cart.id;
+      let bid=localStorage.getItem('buyerid');
+      this.service.CheckCartItem(itemid,bid).subscribe(res=>{
+        this.check=res;
+        console.log(this.check);
+        if(this.check==true){
+          this.Delete();
+        }
+      })
     }
     Delete(){
       console.log(this.cart.cartid);

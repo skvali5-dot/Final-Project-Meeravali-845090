@@ -15,6 +15,13 @@ export class ViewItemsComponent implements OnInit {
   items:Items;
   isShow:boolean=true;
   constructor(private service:SellerService,private formBuilder:FormBuilder,private route:Router) { 
+    if(localStorage.getItem('sellerid')){
+
+    }
+    else{
+      alert('please login With your Credentials');
+      this.route.navigateByUrl('/login');
+    }
   }
   ngOnInit() {
     this.RegisterForm7=this.formBuilder.group({

@@ -17,6 +17,13 @@ export class SellerProfileComponent implements OnInit {
   lists:Seller[];
   seller:Seller;
   constructor(private formbuilder:FormBuilder,private service:SellerService,private route:Router) {  
+    if(localStorage.getItem('sellerid')){
+
+    }
+    else{
+      alert('please login With your Credentials');
+      this.route.navigateByUrl('/login');
+    }
   }
 
   ngOnInit() {

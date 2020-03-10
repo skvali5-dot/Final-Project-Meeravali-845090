@@ -18,10 +18,16 @@ export class AddSubCategoryComponent implements OnInit {
   subcategory:SubCategory;
   categorylist:Category[];
   constructor(private formBuilder:FormBuilder,private service:AdminService,private route:Router) { 
+    if(localStorage.getItem('admin')){
     this.service.GetAllCategories().subscribe(res=>{
       this.categorylist=res;
       console.log(this.categorylist);
     })
+  }
+  else{
+    alert('please login With your Credentials');
+    this.route.navigateByUrl('/login');
+  }
   }
 
   ngOnInit() {

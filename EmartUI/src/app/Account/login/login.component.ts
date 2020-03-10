@@ -53,7 +53,6 @@ export class LoginComponent implements OnInit {
               console.log(this.token.uname);
               localStorage.setItem('username',this.token.uname);
               this.route.navigateByUrl('/buyer-landing-page');
-               
             }
             else{
               alert('Invalid Credentials')
@@ -78,6 +77,7 @@ export class LoginComponent implements OnInit {
       else{
         if(user=="Admin" && pass=="admin")
         {
+          localStorage.setItem('admin','admin');
           this.route.navigateByUrl('admin');
         }
         else{

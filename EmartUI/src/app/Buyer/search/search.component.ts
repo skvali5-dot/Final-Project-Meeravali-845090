@@ -21,11 +21,24 @@ export class SearchComponent implements OnInit {
   clist:Category[];
   cart:Cart;
   category:string;
+  count:number;
   constructor(private service:BuyerService,private route:Router) {
+    if(localStorage.getItem('buyerid')){
+
     this.service.GetCategories().subscribe(res=>{
       this.clist=res;
       console.log(this.clist);
     })
+    let bid=localStorage.getItem('buyerid');
+    this.service.GetCount(bid).subscribe(res=>{
+      this.count=res;
+      console.log(this.count);
+    })
+  }
+  else{
+    alert('please login With your Credentials');
+    this.route.navigateByUrl('/login');
+  }
    }
   ngOnInit() {
   }

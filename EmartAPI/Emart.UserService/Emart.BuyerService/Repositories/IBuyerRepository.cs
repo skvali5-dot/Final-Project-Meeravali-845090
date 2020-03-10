@@ -7,7 +7,7 @@ namespace Emart.BuyerService
 {
     public interface IBuyerRepository
     {
-        List<Items> SearchItemByName(string name);
+        Items SearchItemByName(string name);
         List<Items> SearchItemByCategory(string id);
         List<Items> SearchItemBySubCategory(string id);
         Buyer GetProfile(string id);
@@ -21,5 +21,8 @@ namespace Emart.BuyerService
         List<Cart> GetCartItems(string bid);
         void DeleteCartItem(string cartid);
         int GetCount(string bid);
+        bool CheckCartItem(string itemid,string buyerid);
+        PurchaseHistory GetPurchaseHistory(string id);
+        Cart GetCartItem(string cartid);
     }
 }

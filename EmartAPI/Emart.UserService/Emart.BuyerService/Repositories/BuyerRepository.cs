@@ -26,6 +26,19 @@ namespace Emart.BuyerService.Repositories
             _context.SaveChanges();
         }
 
+        public bool CheckCartItem(string itemid,string buyerid)
+        {
+            Cart cart=_context.Cart.SingleOrDefault(i=>i.Id==itemid &&i.Buyerid==buyerid);
+            if (cart != null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         public void DeleteCartItem(string cartid)
         {
             Cart cart = _context.Cart.Find(cartid);
@@ -42,6 +55,11 @@ namespace Emart.BuyerService.Repositories
         public List<Items> GetAllItems()
         {
             return _context.Items.ToList();
+        }
+
+        public Cart GetCartItem(string cartid)
+        {
+            return _context.Cart.Find(cartid);
         }
 
         public List<Cart> GetCartItems(string bid)
@@ -64,6 +82,10 @@ namespace Emart.BuyerService.Repositories
             return _context.Buyer.Find(id);
         }
 
+        public PurchaseHistory GetPurchaseHistory(string id)
+        {
+            return _context.PurchaseHistory.Find(id); 
+        }
         public List<SubCategory> GetSubCategories(string cid)
         {
             return _context.SubCategory.Where(i => i.CategoryId == cid).ToList();
@@ -80,9 +102,9 @@ namespace Emart.BuyerService.Repositories
             return _context.Items.Where(i => i.CategoryId == id).ToList();
         }
 
-        public List<Items> SearchItemByName(string name)
+        public Items SearchItemByName(string name)
         {
-            return  _context.Items.Where(i => i.ItemName==name).ToList();
+            return _context.Items.SingleOrDefault(i => i.ItemName == name);
         }
 
         public List<Items> SearchItemBySubCategory(string id)

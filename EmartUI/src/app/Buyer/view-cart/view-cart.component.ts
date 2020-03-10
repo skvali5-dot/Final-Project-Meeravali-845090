@@ -15,11 +15,17 @@ cartlist:Cart[];
 item:Items;
 count:number;
   constructor(private route:Router,private service:BuyerService) {
+    if(localStorage.getItem('buyerid')){
     let bid=localStorage.getItem('buyerid');
     this.service.GetCartItems(bid).subscribe(res=>{
       this.cartlist=res;
       console.log(this.cartlist);
     })
+  }
+  else{
+    alert('please login With your Credentials');
+    this.route.navigateByUrl('/login');
+  }
    }
   ngOnInit() {
   }

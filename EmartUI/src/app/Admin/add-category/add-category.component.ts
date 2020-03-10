@@ -14,7 +14,15 @@ export class AddCategoryComponent implements OnInit {
   RegisterForm2:FormGroup;
   submitted=false;
   category:Category;
-  constructor(private formBuilder:FormBuilder,private service:AdminService,private route:Router) { }
+  constructor(private formBuilder:FormBuilder,private service:AdminService,private route:Router) { 
+    if(localStorage.getItem('admin')){
+
+    }
+    else{
+      alert('please login With your Credentials');
+      this.route.navigateByUrl('/login');
+    }
+  }
 
   ngOnInit() {
     this.RegisterForm2=this.formBuilder.group({

@@ -14,7 +14,20 @@ export class ViewProfileComponent implements OnInit {
     RegisterForm:FormGroup;
     submitted=false;
     buyer:Buyer;
-  constructor(private formbuilder:FormBuilder,private service:BuyerService,private route:Router) { }
+    count:number;
+  constructor(private formbuilder:FormBuilder,private service:BuyerService,private route:Router) {
+    if(localStorage.getItem('buyerid')){
+      let bid=localStorage.getItem('buyerid');
+      this.service.GetCount(bid).subscribe(res=>{
+        this.count=res;
+        console.log(this.count);
+      })
+    }
+    else{
+      alert('please login With your Credentials');
+      this.route.navigateByUrl('/login');
+    }
+   }
   ngOnInit() {
     this.RegisterForm=this.formbuilder.group({
       id:[''],
