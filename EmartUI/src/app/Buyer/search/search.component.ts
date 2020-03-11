@@ -22,8 +22,13 @@ export class SearchComponent implements OnInit {
   cart:Cart;
   category:string;
   count:number;
+  item1:Items
   constructor(private service:BuyerService,private route:Router) {
     if(localStorage.getItem('buyerid')){
+      this.service.GetAllItems().subscribe(res=>{
+        this.list=res;
+        console.log(this.list);
+      })
 
     this.service.GetCategories().subscribe(res=>{
       this.clist=res;
