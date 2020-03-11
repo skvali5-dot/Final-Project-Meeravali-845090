@@ -82,7 +82,7 @@ namespace Emart.UserService.Controllers
             }
             catch(Exception ex)
             {
-                return Ok(ex.InnerException.Message);
+                return NotFound(ex.InnerException.Message);
             }
         }
         [HttpPost]
@@ -96,7 +96,7 @@ namespace Emart.UserService.Controllers
             }
             catch (Exception ex)
             {
-                return Ok(ex.InnerException.Message);
+                return NotFound(ex.InnerException.Message);
             }
         }
         private string GenerateJwtToken(string uname)

@@ -1,6 +1,6 @@
 export class Category {
-    categoryid:string;
-    categoryname:string;
-    briefdetails:string;
+    categoryId:string;
+    categoryName:string;
+    briefDetails:string;
 }
 

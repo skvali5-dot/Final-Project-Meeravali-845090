@@ -90,6 +90,20 @@ namespace Emart.AdminService.Controllers
             }
         }
         [HttpGet]
+        [Route("GetAllSubCategories")]
+        public IActionResult GetAllSubCategories()
+        {
+            try
+            {
+                return Ok(_repo.GetAllSubCategories());
+
+            }
+            catch (Exception ex)
+            {
+                return NotFound(ex.Message);
+            }
+        }
+        [HttpGet]
         [Route("GetCategory/{categoryId}")]
         public IActionResult GetCategory(string categoryId)
         {
@@ -109,6 +123,34 @@ namespace Emart.AdminService.Controllers
             try
             {
                 return Ok(_repo.GetSubCategory(subcategoryId));
+            }
+            catch (Exception ex)
+            {
+                return NotFound(ex.Message);
+            }
+        }
+        [HttpPut]
+        [Route("UpdateCategory")]
+        public IActionResult UpdateCategory(Category category)
+        {
+            try
+            {
+                _repo.UpdateCategory(category);
+                return Ok();
+            }
+            catch(Exception ex)
+            {
+                return NotFound(ex.Message);
+            }
+        }
+        [HttpPut]
+        [Route("UpdateSubCategory")]
+        public IActionResult UpdateSubCategory(SubCategory subcategory)
+        {
+            try
+            {
+                _repo.UpdateSubCategory(subcategory);
+                return Ok();
             }
             catch (Exception ex)
             {

@@ -12,7 +12,10 @@ namespace Emart.AdminService.Repositories
         void DeleteCategory(string cid);
         void DeleteSubCategory(string scid);
         List<Category> GetAllCategories();
+        List<SubCategory> GetAllSubCategories();
         Category GetCategory(string cid);
         SubCategory GetSubCategory(string scid);
+        void UpdateCategory(Category category);
+        void UpdateSubCategory(SubCategory subCategory);
     }
 }

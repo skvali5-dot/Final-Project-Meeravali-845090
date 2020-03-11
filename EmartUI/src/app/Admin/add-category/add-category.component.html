@@ -26,6 +26,15 @@
                       <a class="dropdown-item" [routerLink]="'/add-sub-category'">Add SubCategory</a>
                     </div>
                   </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown" style="color: whitesmoke;">
+                      View
+                    </a>
+                    <div class="dropdown-menu">
+                      <a class="dropdown-item" [routerLink]="'/view-category'">View Categories</a>
+                      <a class="dropdown-item" [routerLink]="'/view-sub-category'">View Subcategories</a>
+                    </div>
+                  </li>
                 </ul>
                 <div id="di">
                   <button class="btn btn-danger" (click)="Logout()">SignOut</button>

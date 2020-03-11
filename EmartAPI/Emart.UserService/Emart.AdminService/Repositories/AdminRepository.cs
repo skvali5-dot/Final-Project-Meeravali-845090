@@ -44,6 +44,11 @@ namespace Emart.AdminService.Repositories
             return _context.Category.ToList();
         }
 
+        public List<SubCategory> GetAllSubCategories()
+        {
+            return _context.SubCategory.ToList();
+        }
+
         public Category GetCategory(string categoryid)
         {
             return _context.Category.Find(categoryid);
@@ -52,6 +57,18 @@ namespace Emart.AdminService.Repositories
         public SubCategory GetSubCategory(string subcategoryid)
         {
             return _context.SubCategory.Find(subcategoryid);
+        }
+
+        public void UpdateCategory(Category category)
+        {
+            _context.Category.Update(category);
+            _context.SaveChanges();
+        }
+
+        public void UpdateSubCategory(SubCategory subCategory)
+        {
+            _context.SubCategory.Update(subCategory);
+            _context.SaveChanges();
         }
     }
 }

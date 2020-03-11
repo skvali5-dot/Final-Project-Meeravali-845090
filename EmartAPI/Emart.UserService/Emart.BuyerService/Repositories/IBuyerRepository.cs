@@ -24,6 +24,6 @@ namespace Emart.BuyerService
         bool CheckCartItem(string itemid,string buyerid);
         PurchaseHistory GetPurchaseHistory(string id);
         Cart GetCartItem(string cartid);
-        List<Items> FilterByPrice(int price);
+        List<Items> FilterByPrice(string price);
     }
 }

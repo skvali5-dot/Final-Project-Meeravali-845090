@@ -52,6 +52,10 @@ namespace Emart.BuyerService.Repositories
             _context.SaveChanges();
         }
 
+        public List<Items> FilterByPrice(string price)
+        {
+            return _context.Items.Where(i => i.Price == price).ToList();
+        }
         public List<Items> GetAllItems()
         {
             return _context.Items.ToList();
@@ -102,9 +106,9 @@ namespace Emart.BuyerService.Repositories
             return _context.Items.Where(i => i.CategoryId == id).ToList();
         }
 
-        public Items SearchItemByName(string name)
+        public List<Items> SearchItemByName(string name)
         {
-            return _context.Items.SingleOrDefault(i => i.ItemName == name);
+            return _context.Items.Where(i => i.ItemName == name).ToList();
         }
 
         public List<Items> SearchItemBySubCategory(string id)

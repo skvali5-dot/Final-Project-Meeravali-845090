@@ -25,6 +25,8 @@ import { BlockOrUnblockBuyerComponent } from './Admin/block-or-unblock-buyer/blo
 import { HomeComponent } from './Account/home/home.component';
 import {HttpClient,HttpClientModule} from '@angular/common/http';
 import { SellerProfileComponent } from './Seller/seller-profile/seller-profile.component';
+import { ViewCategoryComponent } from './Admin/view-category/view-category.component';
+import { ViewSubCategotyComponent } from './Admin/view-sub-categoty/view-sub-categoty.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +52,8 @@ import { SellerProfileComponent } from './Seller/seller-profile/seller-profile.c
     AdminComponent,
     HomeComponent,
     SellerProfileComponent,
+    ViewCategoryComponent,
+    ViewSubCategotyComponent,
   ],
   imports: [
     BrowserModule,
