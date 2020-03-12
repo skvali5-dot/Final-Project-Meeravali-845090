@@ -5,7 +5,7 @@ import { Buyer } from 'src/app/Models/buyer';
 import {Seller} from 'src/app/Models/seller';
 const Requestheaders={headers:new HttpHeaders({
   'Content-type':'application/json',
-  'Authorization':'Bearer'+localStorage.getItem('token')
+  'Authorization':'Bearer '+localStorage.getItem('token')
 })}
 @Injectable({
   providedIn: 'root'

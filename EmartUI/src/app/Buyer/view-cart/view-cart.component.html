@@ -10,19 +10,22 @@
       
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link" [routerLink]="'/view-profile'">View Profile</a>
+          <a class="nav-link" [routerLink]="'/view-profile'"><i class="fa fa-user"></i>View Profile</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" [routerLink]="'/purchase-history'">Purchase History</a>
+          <a class="nav-link" [routerLink]="'/purchase-history'"><i class="fa fa-history"></i>Purchase History</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" [routerLink]="'/search'">Search</a>
-          </li>
-        
+          <a class="nav-link" [routerLink]="'/search'"><i class="fa fa-search"></i>Search</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="'/view-cart'"><i class="fa fa-shopping-cart"></i>{{this.count}}</a>
+        </li>
         </ul>
-        <div class="topnav-right offset-7"> 
-             <button class="btn btn-danger" (click)="Logout()">SignOut</button>
+        <div class="offset-7">
+          <button class="btn btn-danger" (click)="Logout()">SignOut</button>
         </div>
+
     </nav>
     </header>
     <main class="bg">   
@@ -31,22 +34,22 @@
         <div class="container">
             <div class="row">
               <div class="col-md-3" *ngFor="let item of cartlist">
-                  <div class="card bg-dark" style="width:250px;height: 500px;" >
+                  <div class="card bg-dark" style="width:250px;height: 450px;" >
                     <h5 class="card-title" style="color: whitesmoke;">{{item.itemname}}</h5>
                      <img class="card-img mx-5" id="i1" src="/assets/Images/{{item.imagename}}" style="width: 150px;height:150px;" alt="Card image cap"> 
                       <div class="card-body" style="color: whitesmoke;">
-                        ItemId:{{item.id}}<br/>
+                        <!-- ItemId:{{item.id}}<br/>
                         CategoryId:{{item.categoryid}}<br/>
                         SubCategoryId:{{item.subcategoryid}}<br/>
-                         SellerId: {{item.sellerid}}<br/>
+                         SellerId: {{item.sellerid}}<br/> -->
                          Price: {{item.price}}<br/>
                           Description:{{item.description}}<br/>
-                          Stock Number:{{item.stocknumber}}<br/>
+                          <!-- Stock Number:{{item.stocknumber}}<br/> -->
                           Remarks:{{item.remarks}}     
                     </div>
                     <div class="card-footer">
                       <div class="text-center">
-                        <button class="btn btn-primary mr-1" (click)="BuyNow(item)" >Buy Now</button>
+                        <button class="btn btn-outline-primary mr-1" (click)="BuyNow(item)" >Buy Now</button>
                         <button class="btn btn-danger mr-1" (click)="Remove(item.cartid)">Remove</button>
                     </div>
                     </div>     

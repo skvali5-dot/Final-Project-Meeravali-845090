@@ -1,14 +1,14 @@
 <html>
   <head></head>
-  <body>
+  <body class="bg">
     <header>
       <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
         <!-- Brand -->
-        <a class="navbar-brand" [routerLink]="'/seller-landing-page'">Logo</a>
+        <a class="navbar-brand" [routerLink]="'/seller-landing-page'">Emart</a>
         <!-- Links -->
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link" [routerLink]="'/seller-profile'">View profile</a>
+                <a class="nav-link" [routerLink]="'/seller-profile'"><i class="fa fa-user"></i>Profile</a>
               </li>
           <li class="nav-item">
             <a class="nav-link" [routerLink]="'/add-items'">Add Items</a>
@@ -19,12 +19,10 @@
           <li class="nav-item">
             <a class="nav-link" [routerLink]="'/view-reports'">View Reports</a>
           </li>
-          <li>
-              <div>
+          </ul>
+          <div class="offset-7">
                 <button class="btn btn-danger" (click)="Logout()">SignOut</button>
               </div>
-            </li>
-        </ul>
       </nav>
     </header>
   </body>

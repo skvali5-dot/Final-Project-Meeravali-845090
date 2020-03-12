@@ -5,18 +5,18 @@
         <header>
             <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
                 <!-- Brand -->
-                <a class="navbar-brand" href="#">Logo</a>
+                <a class="navbar-brand" [routerLink]="'/admin'">Emart</a>
                 <!-- Links -->
                 <ul class="navbar-nav">
                   <li class="nav-item">
                     <a class="nav-link" [routerLink]="'/daily-reports'" style="color: whitesmoke;">Daily Reports</a>
                   </li>
-                  <li class="nav-item">
+                  <!-- <li class="nav-item">
                     <a class="nav-link" [routerLink]="'/block-or-unblock-buyer'" style="color: whitesmoke;">Block Or UnBlock Buyer</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" [routerLink]="'/block-or-unblock-seller'" style="color: whitesmoke;">Block or UnBlock Seller</a>
-                  </li>
+                  </li> -->
                   <!-- Dropdown -->
                   <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown" style="color: whitesmoke;">
@@ -37,7 +37,7 @@
                     </div>
                   </li>
                 </ul>
-                <div id="di">
+                <div class="offset-8">
                   <button class="btn btn-danger" (click)="Logout()">SignOut</button>
                 </div>
               </nav>
@@ -48,20 +48,24 @@
                        <br/> 
                     <table class="table table-bordered">
                       <tr style="color: whitesmoke;" class="text-center">
+                        <th>SubcategoryId</th>
                         <th>Category ID</th>
-                        <th>CategoryName</th>
+                        <th>SubCategoryName</th>
+                        <th>GST</th>
                         <th>Description</th>
                         <th colspan="2">Edit/Delete</th>
                       </tr>
-                      <tr *ngFor="let item of clist" style="color: whitesmoke;">
+                      <tr *ngFor="let item of sclist" style="color: whitesmoke;">
+                        <td>{{item.subcategoryId}}</td>
                         <td>{{item.categoryId}}</td>
-                        <td>{{item.categoryName}}</td>
+                        <td>{{item.subcategoryName}}</td>
+                        <td>{{item.gst}}</td>
                         <td>{{item.briefDetails}}</td> 
                         <td>
                             <button class="btn btn-primary btn-block text-uppercase" data-toggle="modal" data-target="#myModal" (click)="Edit(item)">Edit</button>
                           </td>
                           <td>
-                            <button type="submit" class="btn btn-danger btn-block text-uppercase" (click)="Delete(item.categoryId)">Remove</button>
+                            <button type="submit" class="btn btn-danger btn-block text-uppercase" (click)="Delete(item.subcategoryId)">Remove</button>
                           </td>
                         </tr>
                       </table>
@@ -78,6 +82,13 @@
                     <div class="modal-body">
                       <form [formGroup]="RegisterForm7">    
                         <div class="form-group">
+                          <label>SubcategoryId ID</label>
+                           <input type="text" formControlName="subcategoryid" class="form-control" readonly="readonly"/> 
+                          <!-- <select formControlName="id" class="form-control" (change)="Search()">
+                              <option *ngFor="let item of list" value="{{item.id}}">{{item.id}}</option>
+                          </select> -->
+                        </div>
+                        <div class="form-group">
                           <label>categoryId ID</label>
                            <input type="text" formControlName="categoryid" class="form-control" readonly="readonly"/> 
                           <!-- <select formControlName="id" class="form-control" (change)="Search()">
@@ -85,9 +96,13 @@
                           </select> -->
                         </div>
                           <div class="form-group">
-                              <label>categoryName</label>
-                              <input type="text" formControlName="categoryname" class="form-control" />
+                              <label>SubCategoryName</label>
+                              <input type="text" formControlName="subcategoryname" class="form-control" />
                           </div>
+                          <div class="form-group">
+                            <label>GST</label>
+                            <input type="text" formControlName="gst" class="form-control" />
+                        </div>
                           <div class="form-group">
                               <label>Description</label>
                               <textarea type="text" formControlName="briefdetails" class="form-control"></textarea>

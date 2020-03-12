@@ -44,11 +44,11 @@ export class AddSubCategoryComponent implements OnInit {
       if(this.RegisterForm3.valid)
       {
         this.subcategory=new SubCategory();
-        this.subcategory.subcategoryid='SC'+Math.round(Math.random()*1000);
-        this.subcategory.subcategoryname=this.RegisterForm3.value["subcategoryname"];
-        this.subcategory.categoryid=this.RegisterForm3.value["categoryid"];
-        this.subcategory.briefdetails=this.RegisterForm3.value["briefdetails"];
-        this.subcategory.GST=Number(this.RegisterForm3.value["GST"]);
+        this.subcategory.subcategoryId='SC'+Math.round(Math.random()*1000);
+        this.subcategory.subcategoryName=this.RegisterForm3.value["subcategoryname"];
+        this.subcategory.categoryId=this.RegisterForm3.value["categoryid"];
+        this.subcategory.briefDetails=this.RegisterForm3.value["briefdetails"];
+        this.subcategory.gst=Number(this.RegisterForm3.value["GST"]);
         console.log(this.subcategory);
         alert('SubCategory Added Successfully');
       this.service.AddSubCategory(this.subcategory).subscribe(res=>{

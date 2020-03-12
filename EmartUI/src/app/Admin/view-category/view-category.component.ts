@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AdminService } from 'src/app/Services/admin.service';
 import { Category } from 'src/app/Models/category';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-view-category',
@@ -12,11 +13,18 @@ export class ViewCategoryComponent implements OnInit {
   clist:Category[];
   RegisterForm7:FormGroup;
   category:Category;
-  constructor(private service:AdminService,private formBuilder:FormBuilder) {
+  constructor(private service:AdminService,private formBuilder:FormBuilder,private route:Router) {
+    if(localStorage.getItem('admin')){
+
     this.service.GetAllCategories().subscribe(res=>{
       this.clist=res;
       console.log(this.clist);
     })
+  }
+  else{
+    alert('Please Login with Your Credentials')
+    this.route.navigateByUrl('/login');
+  }
    }
   ngOnInit() {
     this.RegisterForm7=this.formBuilder.group({
@@ -52,5 +60,9 @@ export class ViewCategoryComponent implements OnInit {
     },err=>{
       alert('Update Failed');
     })
+  }
+  Logout(){
+    localStorage.clear();
+    this.route.navigateByUrl('/login');
   }
 }

@@ -38,7 +38,7 @@ export class RegisterSellerComponent implements OnInit {
     password:['',[Validators.required,Validators.pattern('^[a-zA-Z0-9~`!@#$%^&*()-+=]{6,15}$')]],
     companyname:['',[Validators.required,Validators.pattern('^[a-zA-Z]{3,20}$')]],
     GSTIN:['',[Validators.required,Validators.pattern('^[a-zA-Z]{2,10}$')]],
-    briefaboutcompany:['',[Validators.required,Validators.pattern('^[a-zA-z0-9]{2,150}$')]],
+    briefaboutcompany:['',[Validators.required,Validators.pattern('^[a-z A-z0-9]{2,150}$')]],
     postaladdress:['',[Validators.required,Validators.pattern('^[0-9]{6}$')]],
     website:['',[Validators.required]],
     emailid:['',[Validators.required,Validators.email]],

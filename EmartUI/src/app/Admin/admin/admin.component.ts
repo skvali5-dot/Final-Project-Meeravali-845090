@@ -8,7 +8,15 @@ import { Router } from '@angular/router';
 })
 export class AdminComponent implements OnInit {
 
-  constructor(private route:Router) { }
+  constructor(private route:Router) {
+    if(localStorage.getItem('admin')){
+
+    }
+    else{
+      alert('Please Login With Your Credentials');
+      this.route.navigateByUrl('/login');
+    }
+   }
 
   ngOnInit() {
   }

@@ -7,7 +7,7 @@ import { Cart } from '../Models/cart';
 import { BuyerLandingPageComponent } from '../Buyer/buyer-landing-page/buyer-landing-page.component';
 const Requestheaders={headers:new HttpHeaders({
   'Content-type':'application/json',
-  'Authorization':'Bearer'+localStorage.getItem('token')
+  'Authorization':'Bearer '+localStorage.getItem('token')
 })}
 
 
