@@ -36,59 +36,55 @@
                         <div class="card-body">
                             <form [formGroup]="RegisterForm" (ngSubmit)="onSubmit()">    
                                   <div class="form-group">
-                                    <label style="color: whitesmoke;">Number Of Items</label>
+                                    <label style="color: whitesmoke;">Number Of Items*</label>
                                     <input type="text" formControlName="numberofitems" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.numberofitems.errors }" autofocus/>
                                     <div *ngIf="submitted && f.numberofitems.errors" class="invalid-feedback">
                                       <div *ngIf="f.numberofitems.errors.required">Please Provide Number Of Items you want</div>
                                   </div>
                                   </div>
-                                  <!-- <div class="form-group">
-                                    <label style="color: whitesmoke;">Date</label>
-                                    <input type="date" formControlName="date" class="form-control"/>
-                                  </div> -->
                                 <div class="form-group">
-                                    <label style="color: whitesmoke;">Choose PayMent Mode</label>
+                                    <label style="color: whitesmoke;">Choose PayMent Mode*</label>
                                     <select formControlName="transactiontype" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.transactiontype.errors }" required>
-                                        <option value="credit">Credit Card</option>
-                                        <option value="debit">Debit Card</option>
+                                        <option value="creditcard">Credit Card</option>
+                                        <option value="debitcard">Debit Card</option>
                                     </select>
                                     <div *ngIf="submitted && f.transactiontype.errors" class="invalid-feedback">
                                       <div *ngIf="f.transactiontype.errors.required">Please Choose Payment Mode</div>
                                   </div>
                                   </div>
                                   <div class="form-group">
-                                    <label style="color: whitesmoke;">Card Number</label>
+                                    <label style="color: whitesmoke;">Card Number*</label>
                                     <input type="text" formControlName="cardnumber" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.cardnumber.errors }"/>
                                     <div *ngIf="submitted && f.cardnumber.errors" class="invalid-feedback">
                                       <div *ngIf="f.cardnumber.errors.required">SubCategoryName is required</div>
                                   </div>
                                   </div>
                                   <div class="form-group">
-                                    <label style="color: whitesmoke;">CVV</label>
+                                    <label style="color: whitesmoke;">CVV*</label>
                                     <input type="number" formControlName="cvv" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.cvv.errors }" style="width: 30%;"/>
                                     <div *ngIf="submitted && f.cvv.errors" class="invalid-feedback">
                                       <div *ngIf="f.cvv.errors.required">SubCategoryName is required</div>
                                   </div>
                                   </div>
                                   <div class="form-group">
-                                    <label style="color: whitesmoke;">ExpiryDate</label>
+                                    <label style="color: whitesmoke;">ExpiryDate*</label>
                                     <input type="date" formControlName="ed" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.ed.errors }"/>
                                     <div *ngIf="submitted && f.ed.errors" class="invalid-feedback">
-                                      <div *ngIf="f.ed.errors.required">SubCategoryName is required</div>
+                                      <div *ngIf="f.ed.errors.required">Expiry Date is required</div>
                                   </div>
                                   </div>
                                   <div class="form-group">
-                                    <label style="color: whitesmoke;">Card Holders Name</label>
+                                    <label style="color: whitesmoke;">Card Holders Name*</label>
                                     <input type="text" formControlName="name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.name.errors }"/>
                                     <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
-                                      <div *ngIf="f.name.errors.required">SubCategoryName is required</div>
+                                      <div *ngIf="f.name.errors.required">Name is required</div>
                                   </div>
                                   </div>
                                   <div class="form-group">
-                                    <label style="color: whitesmoke;">Remarks</label>
+                                    <label style="color: whitesmoke;">Remarks*</label>
                                     <textarea type="text" formControlName="remarks" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.remarks.errors }"></textarea>
                                     <div *ngIf="submitted && f.remarks.errors" class="invalid-feedback">
-                                      <div *ngIf="f.remarks.errors.required">SubCategoryName is required</div>
+                                      <div *ngIf="f.remarks.errors.required">Remarks are required</div>
                                   </div>
                                   </div>
                                 <hr class="my-4 bg-success"/>

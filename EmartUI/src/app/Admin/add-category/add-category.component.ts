@@ -46,9 +46,6 @@ export class AddCategoryComponent implements OnInit {
           console.log(err);
         })
       }
-      else{
-        alert('form is not Validated');
-      }
   }
   get f() { return this.RegisterForm2.controls; }
   onReset(){

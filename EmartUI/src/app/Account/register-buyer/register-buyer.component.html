@@ -25,7 +25,7 @@
                     <div class="card-body">
                       <form [formGroup]="RegisterForm" (ngSubmit)="onSubmit()">
                         <div class="form-group">
-                            <label style="color: whitesmoke;">UserName</label>
+                            <label style="color: whitesmoke;">UserName*</label>
                             <input type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
                             <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
                                 <div *ngIf="f.username.errors.required">Username is required</div>
@@ -34,7 +34,7 @@
                         </div>
 
                         <div class="form-group">
-                          <label style="color: whitesmoke;">Password</label>
+                          <label style="color: whitesmoke;">Password*</label>
                           <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
                           <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
                               <div *ngIf="f.password.errors.required">Password is required</div>
@@ -43,7 +43,7 @@
                         </div>
                       
                         <div class="form-group">
-                          <label style="color: whitesmoke;">Email</label>
+                          <label style="color: whitesmoke;">Email*</label>
                           <input type="text" formControlName="emailid" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.emailid.errors }" />
                             <div *ngIf="submitted && f.emailid.errors" class="invalid-feedback">
                               <div *ngIf="f.emailid.errors.required">Email is required</div>
@@ -52,18 +52,13 @@
                         </div>
                      
                      <div class="form-group">
-                        <label style="color: whitesmoke;">Mobile</label>
+                        <label style="color: whitesmoke;">Mobile*</label>
                         <input type="text" formControlName="mobile" maxlength="10" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.mobile.errors }" />
                         <div *ngIf="submitted && f.mobile.errors" class="invalid-feedback">
                           <div *ngIf="f.mobile.errors.required">Mobile no is required</div>
                           <div *ngIf="f.mobile.errors.pattern">Mobile a 10-digit valid mobile no</div>
                         </div>
                     </div>
-
-                    <!-- <div class="form-group">
-                      <label style="color: whitesmoke;">Date</label>
-                      <input type="date" formControlName="createddatetime"  class="form-control" required/>
-                  </div> -->
                     <hr class="my-5 bg-success"/>
                     <div class="form-group">  
                       <div class="text-center">      

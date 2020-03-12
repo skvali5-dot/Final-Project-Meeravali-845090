@@ -21,6 +21,10 @@ count:number;
       this.cartlist=res;
       console.log(this.cartlist);
     })
+    this.service.GetCount(bid).subscribe(res=>{
+      this.count=res;
+      console.log(this.count);
+    })
   }
   else{
     alert('please login With your Credentials');
