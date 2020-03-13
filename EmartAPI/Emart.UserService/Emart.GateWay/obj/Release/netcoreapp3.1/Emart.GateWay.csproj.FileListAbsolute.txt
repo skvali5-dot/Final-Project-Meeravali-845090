@@ -49,8 +49,6 @@ D:\Final-Project-Meeravali-845090\EmartAPI\Emart.UserService\Emart.GateWay\bin\R
 D:\Final-Project-Meeravali-845090\EmartAPI\Emart.UserService\Emart.GateWay\obj\Release\netcoreapp3.1\Emart.GateWay.csprojAssemblyReference.cache
 D:\Final-Project-Meeravali-845090\EmartAPI\Emart.UserService\Emart.GateWay\obj\Release\netcoreapp3.1\staticwebassets\Emart.GateWay.StaticWebAssets.Manifest.cache
 D:\Final-Project-Meeravali-845090\EmartAPI\Emart.UserService\Emart.GateWay\obj\Release\netcoreapp3.1\staticwebassets\Emart.GateWay.StaticWebAssets.xml
-D:\Final-Project-Meeravali-845090\EmartAPI\Emart.UserService\Emart.GateWay\obj\Release\netcoreapp3.1\Emart.GateWay.MvcApplicationPartsAssemblyInfo.cs
-D:\Final-Project-Meeravali-845090\EmartAPI\Emart.UserService\Emart.GateWay\obj\Release\netcoreapp3.1\Emart.GateWay.MvcApplicationPartsAssemblyInfo.cache
 D:\Final-Project-Meeravali-845090\EmartAPI\Emart.UserService\Emart.GateWay\obj\Release\netcoreapp3.1\Emart.GateWay.AssemblyInfoInputs.cache
 D:\Final-Project-Meeravali-845090\EmartAPI\Emart.UserService\Emart.GateWay\obj\Release\netcoreapp3.1\Emart.GateWay.AssemblyInfo.cs
 D:\Final-Project-Meeravali-845090\EmartAPI\Emart.UserService\Emart.GateWay\obj\Release\netcoreapp3.1\Emart.GateWay.RazorTargetAssemblyInfo.cache

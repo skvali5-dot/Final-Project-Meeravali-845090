@@ -67,7 +67,7 @@ namespace Emart.AdminService.Controllers
         {
             try
             {
-                _repo.DeleteCategory(subcategory_id);
+                _repo.DeleteSubCategory(subcategory_id);
                 return Ok();
             }
             catch (Exception ex)

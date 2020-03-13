@@ -52,10 +52,12 @@ namespace Emart.BuyerService.Repositories
             _context.SaveChanges();
         }
 
-        public List<Items> FilterByPrice(string price)
-        {
-            return _context.Items.Where(i => i.Price == price).ToList();
-        }
+        //public List<Items> FilterByPrice(string price,string price1)
+        //{
+        //    int price3 = int.Parse(price);
+        //    int price4 = int.Parse(price1);
+        //    return _context.Items.Where(i=>(i.Price >=int.Parse(price)) &&(i.Price<=price4)).ToList();
+        //}
         public List<Items> GetAllItems()
         {
             return _context.Items.ToList();

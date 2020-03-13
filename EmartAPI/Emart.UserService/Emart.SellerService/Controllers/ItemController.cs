@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Emart.SellerService.Models;
 using Emart.SellerService.Repositories;
+using Microsoft.AspNetCore.Authorization;
+
 namespace Emart.SellerService.Controllers
 {
     [Route("api/[controller]")]

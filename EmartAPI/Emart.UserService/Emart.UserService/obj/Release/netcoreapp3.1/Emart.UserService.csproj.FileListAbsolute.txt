@@ -121,7 +121,6 @@ D:\Final-Project-Meeravali-845090\EmartAPI\Emart.UserService\Emart.UserService\b
 D:\Final-Project-Meeravali-845090\EmartAPI\Emart.UserService\Emart.UserService\obj\Release\netcoreapp3.1\Emart.UserService.csprojAssemblyReference.cache
 D:\Final-Project-Meeravali-845090\EmartAPI\Emart.UserService\Emart.UserService\obj\Release\netcoreapp3.1\staticwebassets\Emart.UserService.StaticWebAssets.Manifest.cache
 D:\Final-Project-Meeravali-845090\EmartAPI\Emart.UserService\Emart.UserService\obj\Release\netcoreapp3.1\staticwebassets\Emart.UserService.StaticWebAssets.xml
-D:\Final-Project-Meeravali-845090\EmartAPI\Emart.UserService\Emart.UserService\obj\Release\netcoreapp3.1\Emart.UserService.MvcApplicationPartsAssemblyInfo.cache
 D:\Final-Project-Meeravali-845090\EmartAPI\Emart.UserService\Emart.UserService\obj\Release\netcoreapp3.1\Emart.UserService.AssemblyInfoInputs.cache
 D:\Final-Project-Meeravali-845090\EmartAPI\Emart.UserService\Emart.UserService\obj\Release\netcoreapp3.1\Emart.UserService.AssemblyInfo.cs
 D:\Final-Project-Meeravali-845090\EmartAPI\Emart.UserService\Emart.UserService\obj\Release\netcoreapp3.1\Emart.UserService.RazorTargetAssemblyInfo.cache

@@ -58,7 +58,7 @@ namespace Emart.UserService.Controllers
                 Seller seller = _repo.SellerLogin(username, password);
                 if (seller!= null)
                 {
-                    token = new Token() { sellerid = seller.Id, token = GenerateJwtToken(username), message = "success" };
+                    token = new Token() { sellerid = seller.Id, token = GenerateJwtToken(username), message = "success" ,uname=seller.Username};
                 }
                 else
                 {

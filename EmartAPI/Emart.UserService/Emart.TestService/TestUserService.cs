@@ -40,14 +40,14 @@ namespace Emart.TestService
         {
             _repo.BuyerSignUp(new Buyer()
             {
-                Id = "B045",
-                Username = "vali5",
+                Id = "B745",
+                Username = "sallubhai",
                 Password = "xyz123",
-                Emailid = "vali5@gmail.com",
+                Emailid = "sallubhai@gmail.com",
                 Mobilenumber = "7787989899",
                 Createddatetime = DateTime.Now
             });
-            var result=_repo.BuyerLogin("vali5", "xyz123");
+            var result=_repo.BuyerLogin("sallubhai", "xyz123");
             Assert.IsNotNull(result);
         }
         [Test]
@@ -56,18 +56,18 @@ namespace Emart.TestService
         {
             _repo.SellerSignUp(new Seller()
             {
-                Id = "S045",
-                Username = "Seller5",
-                Password = "seller5",
-                Emailid = "seller5@gmail.com",
-                Contactnumber = "8787989899",
-                Companyname="Oppo",
-                Website="Oppo.com",
+                Id = "S090",
+                Username = "Siddu",
+                Password = "siddu123",
+                Emailid = "siddu@gmail.com",
+                Contactnumber = "8788888889",
+                Companyname="vivo",
+                Website="vivo.com",
                 PostalAddress="676767",
                 Gstin="Yes",
                 Briefaboutcompany="Once A brand Ambassador For Cricket Indian Team"
             });
-            var result = _repo.SellerLogin("Seller5", "seller5");
+            var result = _repo.SellerLogin("Siddu", "siddu123");
             Assert.IsNotNull(result);
         }
     }

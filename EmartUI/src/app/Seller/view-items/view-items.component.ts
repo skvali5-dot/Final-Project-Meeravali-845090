@@ -13,6 +13,7 @@ export class ViewItemsComponent implements OnInit {
   RegisterForm7:FormGroup;
   list:Items[];
   items:Items;
+  item:Items;
   isShow:boolean=true;
   constructor(private service:SellerService,private formBuilder:FormBuilder,private route:Router) { 
     if(localStorage.getItem('sellerid')){
@@ -98,6 +99,9 @@ export class ViewItemsComponent implements OnInit {
     this.service.DeleteItem(id).subscribe(res=>{
       alert('Record Deleted');
     })
+  }
+  Preview(item:Items){
+    this.item=item;
   }
   Logout(){
     localStorage.clear();

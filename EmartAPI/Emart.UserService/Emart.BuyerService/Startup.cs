@@ -11,6 +11,10 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Emart.BuyerService.Models;
 using Emart.BuyerService.Repositories;
+using System.IdentityModel.Tokens.Jwt;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 namespace Emart.BuyerService
 {
@@ -27,8 +31,9 @@ namespace Emart.BuyerService
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<EmartDBContext>();
-            services.AddControllers();
             services.AddTransient<IBuyerRepository,BuyerRepository>();
+          
+            services.AddControllers();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -38,9 +43,8 @@ namespace Emart.BuyerService
             {
                 app.UseDeveloperExceptionPage();
             }
-
             app.UseRouting();
-
+ 
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

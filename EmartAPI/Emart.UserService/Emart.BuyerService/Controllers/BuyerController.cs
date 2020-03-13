@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Emart.BuyerService.Models;
 using Emart.BuyerService.Repositories;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Emart.BuyerService.Controllers
 {

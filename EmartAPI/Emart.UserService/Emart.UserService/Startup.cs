@@ -38,10 +38,9 @@ namespace Emart.UserService
                  .AllowAnyHeader());
             });
             services.AddDbContext<EmartDBContext>();
-            services.AddControllers();
             services.AddTransient<IUserRepository, UserRepository>();
 
-            JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
+            //JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
             services.AddAuthentication(options =>
             {
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -59,6 +58,7 @@ namespace Emart.UserService
                     ClockSkew = TimeSpan.Zero
                 };
             });
+            services.AddControllers();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -68,13 +68,12 @@ namespace Emart.UserService
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            app.UseAuthentication();
             app.UseRouting();
 
             app.UseAuthorization();
 
             app.UseCors("AllowOrigin");
-            app.UseAuthentication();
 
             app.UseEndpoints(endpoints =>
             {
