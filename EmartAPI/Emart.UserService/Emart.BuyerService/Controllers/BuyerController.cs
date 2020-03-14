@@ -219,7 +219,7 @@ namespace Emart.BuyerService.Controllers
             }
         }
         [HttpGet]
-        [Route("GetPurchaseHistory{id}")]
+        [Route("GetPurchaseHistory/{id}")]
         public IActionResult GetPurchaseHostory(string id)
         {
             try
